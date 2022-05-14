@@ -1,0 +1,280 @@
+@prefix : <http://www.semanticweb.org/abate/ontologies/2022/4/swea#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/abate/ontologies/2022/4/swea> .
+
+<http://www.semanticweb.org/abate/ontologies/2022/4/swea> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_be_exploited_in
+:can_be_exploited_in rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     owl:inverseOf :can_exploit ;
+                     rdfs:domain :Renewable_Energy_Sources ;
+                     rdfs:range :Territory .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit
+:can_exploit rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Territory ;
+             rdfs:range :Renewable_Energy_Sources .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by
+:covered_by rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Territory ;
+            rdfs:range :Power_Plant .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by
+:determined_by rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :determines ;
+               rdfs:domain :Production_Criteria ;
+               rdfs:range :Territory .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determines
+:determines rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Territory ;
+            rdfs:range :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#exploited_in
+:exploited_in rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Renewable_Energy_Sources ;
+              rdfs:range :Territory .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_device
+:featured_by_device rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :Technical_Criteria ;
+                    rdfs:range :Device .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_environment
+:featured_by_environment rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain :Ambiental_Criteria ;
+                         rdfs:range :Ecosystem .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_norm
+:featured_by_norm rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Political_Criteria ;
+                  rdfs:range :Legal_Norm .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#influences_the_use_of
+:influences_the_use_of rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       owl:inverseOf :used_based_on ;
+                       rdfs:domain :Production_Criteria ;
+                       rdfs:range :Renewable_Energy_Sources .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in
+:located_in rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Power_Plant ;
+            rdfs:range :Territory .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#measured_by
+:measured_by rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Ambiental_Criteria ,
+                         :Technical_Criteria ;
+             rdfs:range :Measure .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#owns
+:owns rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :Company ;
+      rdfs:range :Power_Plant .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#price
+:price rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :Finance_Criteria ;
+       rdfs:range :Price .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with
+:produce_energy_with rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :Power_Plant ;
+                     rdfs:range :Renewable_Energy_Sources .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#used_based_on
+:used_based_on rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Renewable_Energy_Sources ;
+               rdfs:range :Production_Criteria .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#acceptance_rateo
+:acceptance_rateo rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Social_Criteria ;
+                  rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#currency
+:currency rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Price ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Production_Criteria ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#source
+:source rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Production_Criteria ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#unit
+:unit rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Measure ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#value
+:value rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Measure ,
+                   :Price ;
+       rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ambiental_Criteria
+:Ambiental_Criteria rdf:type owl:Class ;
+                    rdfs:subClassOf :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Biomass
+:Biomass rdf:type owl:Class ;
+         rdfs:subClassOf :Renewable_Energy_Sources ;
+         rdfs:seeAlso <https://dbpedia.org/page/Biomass> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company
+:Company rdf:type owl:Class ;
+         rdfs:seeAlso <https://dbpedia.org/page/Company> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device
+:Device rdf:type owl:Class ;
+        rdfs:seeAlso <https://dbpedia.org/ontology/Device> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ecosystem
+:Ecosystem rdf:type owl:Class ;
+           rdfs:seeAlso <https://dbpedia.org/page/Ecosystem> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Finance_Criteria
+:Finance_Criteria rdf:type owl:Class ;
+                  rdfs:subClassOf :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm
+:Legal_Norm rdf:type owl:Class ;
+            rdfs:seeAlso <https://dbpedia.org/page/Legal_norm> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure
+:Measure rdf:type owl:Class ;
+         rdfs:seeAlso <https://dbpedia.org/page/Measurement> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Political_Criteria
+:Political_Criteria rdf:type owl:Class ;
+                    rdfs:subClassOf :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Power_Plant
+:Power_Plant rdf:type owl:Class ;
+             rdfs:seeAlso "https://dbpedia.org/page/Power_station" .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Price
+:Price rdf:type owl:Class ;
+       rdfs:seeAlso <https://dbpedia.org/page/Price> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Production_Criteria
+:Production_Criteria rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources
+:Renewable_Energy_Sources rdf:type owl:Class ;
+                          rdfs:seeAlso <https://dbpedia.org/page/Renewable_energy> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Social_Criteria
+:Social_Criteria rdf:type owl:Class ;
+                 rdfs:subClassOf :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Solar_Energy
+:Solar_Energy rdf:type owl:Class ;
+              rdfs:subClassOf :Renewable_Energy_Sources ;
+              rdfs:seeAlso <https://dbpedia.org/page/Solar_energy> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Technical_Criteria
+:Technical_Criteria rdf:type owl:Class ;
+                    rdfs:subClassOf :Production_Criteria .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory
+:Territory rdf:type owl:Class ;
+           rdfs:seeAlso <https://dbpedia.org/page/Territory> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Water_Energy
+:Water_Energy rdf:type owl:Class ;
+              rdfs:subClassOf :Renewable_Energy_Sources ;
+              rdfs:seeAlso <https://dbpedia.org/page/Hydropower> .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Wind_Energy
+:Wind_Energy rdf:type owl:Class ;
+             rdfs:subClassOf :Renewable_Energy_Sources ;
+             rdfs:seeAlso <https://dbpedia.org/page/Wind_power> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
