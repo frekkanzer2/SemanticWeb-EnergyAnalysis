@@ -1,6 +1,6 @@
 # SW-EA
 ## - How to display the ontology
-1. Go on the following link: https://service.tib.eu/webvowl/
+1. Go on the following link: http://vowl.visualdataweb.org/webvowl.htmlhttps://service.tib.eu/webvowl/ and run WEBVOWL (try the old version if primary link is down)
 2. On the bottom bar, press on "Ontology"
 3. <img src="https://user-images.githubusercontent.com/24304905/168416515-f1f3c0cd-1c1a-47bb-a1eb-c82cc8c1c27e.png" width="150">
 4. Press on "Select ontology file"
