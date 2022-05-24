@@ -14,8 +14,22 @@ export function SourcePage(props) {
     
     var sourcedata = {
         name: props.name,
-        description: props.description
+        definition: props.definition,
+        description: props.description,
+        placedTerritories: [], // array of {name: STRING, address: STRING} DEF 1 is source name; 2 is semantic resource address
+        crit_amb: [], // this and the following 4 arrays contains only strings
+        crit_fin: [],
+        crit_pol: [],
+        crit_soc: [],
+        crit_tec: [],
     }
+
+    sourcedata.crit_amb = props.criteria[0];
+    sourcedata.crit_fin = props.criteria[1];
+    sourcedata.crit_pol = props.criteria[2];
+    sourcedata.crit_soc = props.criteria[3];
+    sourcedata.crit_tec = props.criteria[4];
+    sourcedata.placedTerritories = props.territories;
 
     const [open_ambiental, setOpen_ambiental] = React.useState(false);
     const [open_finance, setOpen_finance] = React.useState(false);
@@ -49,6 +63,20 @@ export function SourcePage(props) {
             <Typography variant="h5" component="div" gutterBottom>
                 Description
             </Typography>
+            <Typography variant="caption" component="div" gutterBottom>
+            What is a renewable source?
+            </Typography>
+            
+            <Container maxWidth="sm" style={{marginLeft: 0}}>
+                <Typography variant="body1" component="div" gutterBottom>
+                    {sourcedata.definition}
+                </Typography>
+            </Container>
+            <Space16/>
+
+            <Typography variant="caption" component="div" gutterBottom>
+            About {sourcedata.name}
+            </Typography>
             
             <Container maxWidth="sm" style={{marginLeft: 0}}>
                 <Typography variant="body1" component="div" gutterBottom>
@@ -70,15 +98,17 @@ export function SourcePage(props) {
                 component="nav"
                 aria-labelledby="nested-list-subheader"
                 >
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Territory 1" />
-                </ListItemButton>
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Territory 2" />
-                </ListItemButton>
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Territory 3" />
-                </ListItemButton>
+                {
+                    sourcedata.placedTerritories.map(
+                        territory => {
+                            return (
+                                <ListItemButton className='listitem-dark'>
+                                    <ListItemText primary={territory.name} />
+                                </ListItemButton>
+                            )
+                        }
+                    )
+                }
                 </List>
             </Container>
 
@@ -101,9 +131,22 @@ export function SourcePage(props) {
                 </ListItemButton>
                 <Collapse in={open_ambiental} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                        <ListItemText primary="DESCRIPTION HERE" />
-                    </ListItemButton>
+                        {
+                            sourcedata.crit_amb.length > 0 ?
+                                sourcedata.crit_amb.map(
+                                    crit => {
+                                        return (
+                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                <ListItemText primary={"- " + crit} />
+                                            </ListItemButton>
+                                        )
+                                    }
+                                )
+                            :
+                                <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                    <ListItemText primary={"Empty"} />
+                                </ListItemButton>
+                        }
                     </List>
                 </Collapse>
                 <ListItemButton onClick={handleClick_finance} className='listitem-dark'>
@@ -111,10 +154,22 @@ export function SourcePage(props) {
                     {open_finance ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open_finance} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                        <ListItemText primary="DESCRIPTION HERE" />
-                    </ListItemButton>
+                    <List component="div" disablePadding>{
+                        sourcedata.crit_fin.length > 0 ?
+                            sourcedata.crit_fin.map(
+                                crit => {
+                                    return (
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"- " + crit} />
+                                        </ListItemButton>
+                                    )
+                                }
+                            )
+                        :
+                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                <ListItemText primary={"Empty"} />
+                            </ListItemButton>
+                        }
                     </List>
                 </Collapse>
                 <ListItemButton onClick={handleClick_political} className='listitem-dark'>
@@ -122,10 +177,22 @@ export function SourcePage(props) {
                     {open_political ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open_political} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                        <ListItemText primary="DESCRIPTION HERE" />
-                    </ListItemButton>
+                    <List component="div" disablePadding>{
+                        sourcedata.crit_pol.length > 0 ?
+                            sourcedata.crit_pol.map(
+                                crit => {
+                                    return (
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"- " + crit} />
+                                        </ListItemButton>
+                                    )
+                                }
+                            )
+                        :
+                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                <ListItemText primary={"Empty"} />
+                            </ListItemButton>
+                        }
                     </List>
                 </Collapse>
                 <ListItemButton onClick={handleClick_social} className='listitem-dark'>
@@ -134,9 +201,22 @@ export function SourcePage(props) {
                 </ListItemButton>
                 <Collapse in={open_social} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                        <ListItemText primary="DESCRIPTION HERE" />
-                    </ListItemButton>
+                        {
+                            sourcedata.crit_soc.length > 0 ?
+                                sourcedata.crit_soc.map(
+                                    crit => {
+                                        return (
+                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                <ListItemText primary={"- " + crit} />
+                                            </ListItemButton>
+                                        )
+                                    }
+                                )
+                            :
+                                <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                    <ListItemText primary={"Empty"} />
+                                </ListItemButton>
+                        }
                     </List>
                 </Collapse>
                 <ListItemButton onClick={handleClick_technical} className='listitem-dark'>
@@ -144,10 +224,22 @@ export function SourcePage(props) {
                     {open_technical ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open_technical} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                        <ListItemText primary="DESCRIPTION HERE" />
-                    </ListItemButton>
+                    <List component="div" disablePadding>{
+                        sourcedata.crit_tec.length > 0 ?
+                            sourcedata.crit_tec.map(
+                                crit => {
+                                    return (
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"- " + crit} />
+                                        </ListItemButton>
+                                    )
+                                }
+                            )
+                        :
+                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                <ListItemText primary={"Empty"} />
+                            </ListItemButton>
+                        }
                     </List>
                 </Collapse>
                 </List>

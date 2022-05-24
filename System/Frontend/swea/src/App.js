@@ -21,6 +21,23 @@ function App() {
     placedCompanies: [{name: "Ikea", address: "dbpedia:ikea"}, {name: "Sauttificio", address: "dbpedia:sauttificio"}]
   }
 
+  var testdata_source = {
+    name: "Biomass",
+    definition: "Definizione della fonte rinnovabile",
+    description: "Fonte molto bella, questa in particolare è massa di specialità BIO. Avete capito bene, proprio BIO!",
+    criterias: [
+      ["Il sole deve battere forte", "Gesù ci vuole vittoriosi", "Gesù si chiama vittorio"],
+      ["Questo è un criterio", "Anche questo è un criterio", "Questo è Carmine"],
+      ["Pippo Baudo è capellone"],
+      [],
+      ["Gesù disse agli apostoli: welcome to Favelas, mangiatene tutti e poi datevi alla pazza gioia sul culo di dio"]
+    ],
+    placedTerritories: [{name: "Italy", address: "dbpedia:italy"}, {name: "Romania", address: "dbpedia:romania"}]
+  }
+
+  // RETURN FOR TERRITORY PAGE
+  /*
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -35,6 +52,24 @@ function App() {
       </header>
     </div>
   );
+  
+  */
+
+  // RETURN FOR SOURCE PAGE
+  return (
+    <div className="App">
+      <header className="App-header">
+        <SourcePage 
+          name={testdata_source.name} 
+          definition = {testdata_source.definition}
+          description = {testdata_source.description} 
+          criteria = {testdata_source.criterias}
+          territories = {testdata_source.placedTerritories}
+        />
+      </header>
+    </div>
+  );
+
 }
 
 export default App;
