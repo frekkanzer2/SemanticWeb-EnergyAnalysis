@@ -31,14 +31,14 @@
 :covered_by rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Territory ;
-            rdfs:range :Power_Plant .
+            rdfs:range :Company .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by
 :determined_by rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :determines ;
                owl:inverseOf :determines ;
-               rdfs:domain :Production_Criteria ;
+               rdfs:domain :Utilization_Criteria ;
                rdfs:range :Territory .
 
 
@@ -46,7 +46,7 @@
 :determines rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Territory ;
-            rdfs:range :Production_Criteria .
+            rdfs:range :Utilization_Criteria .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#exploited_in
@@ -59,21 +59,21 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_device
 :featured_by_device rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
-                    rdfs:domain :Production_Criteria ;
+                    rdfs:domain :Utilization_Criteria ;
                     rdfs:range :Device .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_environment
 :featured_by_environment rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf owl:topObjectProperty ;
-                         rdfs:domain :Production_Criteria ;
+                         rdfs:domain :Utilization_Criteria ;
                          rdfs:range :Ecosystem .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_norm
 :featured_by_norm rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
-                  rdfs:domain :Production_Criteria ;
+                  rdfs:domain :Utilization_Criteria ;
                   rdfs:range :Legal_Norm .
 
 
@@ -81,42 +81,35 @@
 :influences_the_use_of rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf owl:topObjectProperty ;
                        owl:inverseOf :used_based_on ;
-                       rdfs:domain :Production_Criteria ;
+                       rdfs:domain :Utilization_Criteria ;
                        rdfs:range :Renewable_Energy_Sources .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in
 :located_in rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Power_Plant ;
+            rdfs:domain :Company ;
             rdfs:range :Territory .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#measured_by
 :measured_by rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Production_Criteria ;
+             rdfs:domain :Utilization_Criteria ;
              rdfs:range :Measure .
-
-
-###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#owns
-:owns rdf:type owl:ObjectProperty ;
-      rdfs:subPropertyOf owl:topObjectProperty ;
-      rdfs:domain :Company ;
-      rdfs:range :Power_Plant .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#price
 :price rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :Production_Criteria ;
+       rdfs:domain :Utilization_Criteria ;
        rdfs:range :Price .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with
 :produce_energy_with rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf owl:topObjectProperty ;
-                     rdfs:domain :Power_Plant ;
+                     rdfs:domain :Company ;
                      rdfs:range :Renewable_Energy_Sources .
 
 
@@ -124,7 +117,7 @@
 :used_based_on rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
                rdfs:domain :Renewable_Energy_Sources ;
-               rdfs:range :Production_Criteria .
+               rdfs:range :Utilization_Criteria .
 
 
 #################################################################
@@ -134,13 +127,13 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#acceptance_rateo
 :acceptance_rateo rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Production_Criteria ;
+                  rdfs:domain :Utilization_Criteria ;
                   rdfs:range xsd:double .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#criteria_type
 :criteria_type rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Production_Criteria ;
+               rdfs:domain :Utilization_Criteria ;
                rdfs:range xsd:string .
 
 
@@ -154,14 +147,14 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#description
 :description rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Production_Criteria ;
+             rdfs:domain :Utilization_Criteria ;
              rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#source
 :source rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:domain :Production_Criteria ;
+        rdfs:domain :Utilization_Criteria ;
         rdfs:range xsd:string .
 
 
@@ -219,10 +212,6 @@
        rdfs:seeAlso <https://dbpedia.org/page/Price> .
 
 
-###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Production_Criteria
-:Production_Criteria rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources
 :Renewable_Energy_Sources rdf:type owl:Class ;
                           rdfs:seeAlso <https://dbpedia.org/page/Renewable_energy> .
@@ -233,13 +222,106 @@
            rdfs:seeAlso <https://dbpedia.org/page/Territory> .
 
 
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria
+:Utilization_Criteria rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
+###  http://dbpedia.org/resource/Biomass
+<http://dbpedia.org/resource/Biomass> rdf:type owl:NamedIndividual ,
+                                               :Renewable_Energy_Sources .
+
+
 ###  http://dbpedia.org/resource/Campania
 <http://dbpedia.org/resource/Campania> rdf:type owl:NamedIndividual ,
                                                 :Territory .
+
+
+###  http://dbpedia.org/resource/Emilia-Romagna
+<http://dbpedia.org/resource/Emilia-Romagna> rdf:type owl:NamedIndividual ,
+                                                      :Territory .
+
+
+###  http://dbpedia.org/resource/Enel
+<http://dbpedia.org/resource/Enel> rdf:type owl:NamedIndividual ,
+                                            :Company .
+
+
+###  http://dbpedia.org/resource/Falck_Renewables
+<http://dbpedia.org/resource/Falck_Renewables> rdf:type owl:NamedIndividual ,
+                                                        :Company .
+
+
+###  http://dbpedia.org/resource/First_Solar
+<http://dbpedia.org/resource/First_Solar> rdf:type owl:NamedIndividual ,
+                                                   :Company .
+
+
+###  http://dbpedia.org/resource/Geothermal_energy
+<http://dbpedia.org/resource/Geothermal_energy> rdf:type owl:NamedIndividual ,
+                                                         :Renewable_Energy_Sources .
+
+
+###  http://dbpedia.org/resource/Hydropower
+<http://dbpedia.org/resource/Hydropower> rdf:type owl:NamedIndividual ,
+                                                  :Renewable_Energy_Sources .
+
+
+###  http://dbpedia.org/resource/NextEra_Energy
+<http://dbpedia.org/resource/NextEra_Energy> rdf:type owl:NamedIndividual ,
+                                                      :Company .
+
+
+###  http://dbpedia.org/resource/Nuclear_fusion
+<http://dbpedia.org/resource/Nuclear_fusion> rdf:type owl:NamedIndividual ,
+                                                      :Renewable_Energy_Sources .
+
+
+###  http://dbpedia.org/resource/Ormat_Technologies
+<http://dbpedia.org/resource/Ormat_Technologies> rdf:type owl:NamedIndividual ,
+                                                          :Company .
+
+
+###  http://dbpedia.org/resource/Salerno
+<http://dbpedia.org/resource/Salerno> rdf:type owl:NamedIndividual ,
+                                               :Territory .
+
+
+###  http://dbpedia.org/resource/Solar_energy
+<http://dbpedia.org/resource/Solar_energy> rdf:type owl:NamedIndividual ,
+                                                    :Renewable_Energy_Sources .
+
+
+###  http://dbpedia.org/resource/Verbund
+<http://dbpedia.org/resource/Verbund> rdf:type owl:NamedIndividual ,
+                                               :Company .
+
+
+###  http://dbpedia.org/resource/Vestas
+<http://dbpedia.org/resource/Vestas> rdf:type owl:NamedIndividual ,
+                                              :Company .
+
+
+###  http://dbpedia.org/resource/Vietri_sul_Mare
+<http://dbpedia.org/resource/Vietri_sul_Mare> rdf:type owl:NamedIndividual ,
+                                                       :Territory .
+
+
+###  http://dbpedia.org/resource/Wind_power
+<http://dbpedia.org/resource/Wind_power> rdf:type owl:NamedIndividual ,
+                                                  :Renewable_Energy_Sources .
+
+
+###  http://dbpedia.org/resource/Edison_(company)
+<http://dbpedia.org/resource/Edison_(company)> rdf:type owl:NamedIndividual ,
+                                                        :Company .
+
+
+###  https://dbpedia.org/resource/Salerno
+<https://dbpedia.org/resource/Salerno> rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

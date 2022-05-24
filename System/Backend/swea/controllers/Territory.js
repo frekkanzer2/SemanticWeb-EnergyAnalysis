@@ -72,11 +72,13 @@ exports.singleCountryInf = async (req, res, next) => {
     PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dbo: <http://dbpedia.org/ontology/>
-    SELECT ?abstract ?population
+    SELECT ?abstract ?population ?thumbnail
     WHERE
     {
        <` + countryRes + `> dbo:abstract ?abstract .
        <` + countryRes + `> dbo:populationTotal ?population.
+       <` + countryRes + `> dbo:thumbnail ?thumbnail.
+       
 
     FILTER ( LANG ( ?abstract) = 'en' )
     }`, {
@@ -87,6 +89,7 @@ exports.singleCountryInf = async (req, res, next) => {
         
         jsonData['abstract'] = binding.get('abstract').value;
         jsonData['population'] = binding.get('population').value;
+        jsonData['thumbnail'] = binding.get('thumbnail').value;
         
         console.log(jsonData)
 
