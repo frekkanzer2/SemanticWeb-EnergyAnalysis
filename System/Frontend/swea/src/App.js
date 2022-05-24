@@ -1,24 +1,19 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import {Tester} from './view/homepage.js';
+import {TerritoryPage} from './view/territorypage';
 
 function App() {
+
+  var testdata = {
+    name: "Here goes the territory name",
+    description: "AUIBDAUWI B UIAB DUIA BDUIWAB DIAW NDUIBA IFBWAIUO DBAWUI DBWAUI BDWAUI BDWAUI DNWAIO DBWAUID BAWIO FNBUI AWU BIUO ANW DIOWABFUWA NIOAW"
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Tester/>
+        <TerritoryPage name={testdata.name} description = {testdata.description}/>
       </header>
     </div>
   );
