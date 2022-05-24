@@ -53,6 +53,17 @@ export function SourcePage(props) {
         setOpen_technical(!open_technical);
     };
 
+    var callback_changePage = props.changePageCallback;
+    
+    const onPressedTerritory = (chosenTerritory) => {
+        for (var i = 0; i < sourcedata.placedTerritories.length; i++) {
+            if (chosenTerritory == sourcedata.placedTerritories[i].name) {
+                callback_changePage(1, i);
+                break;
+            }
+        }
+    };
+
     return (
         <Container maxWidth="xl" className='pageContainer'>
             <Typography variant="h3" component="div" gutterBottom>
@@ -102,7 +113,7 @@ export function SourcePage(props) {
                     sourcedata.placedTerritories.map(
                         territory => {
                             return (
-                                <ListItemButton className='listitem-dark'>
+                                <ListItemButton className='listitem-dark' onClick={() => {onPressedTerritory(territory.name)}}>
                                     <ListItemText primary={territory.name} />
                                 </ListItemButton>
                             )

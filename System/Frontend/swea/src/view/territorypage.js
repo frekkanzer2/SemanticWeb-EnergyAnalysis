@@ -55,6 +55,17 @@ export function TerritoryPage(props) {
         setOpen_technical(!open_technical);
     };
 
+    var callback_changePage = props.changePageCallback;
+    
+    const onPressedSource = (chosenSource) => {
+        for (var i = 0; i < territorydata.placedSources.length; i++) {
+            if (chosenSource == territorydata.placedSources[i].name) {
+                callback_changePage(2, i);
+                break;
+            }
+        }
+    };
+
     return(
         <Container maxWidth="xl" className='pageContainer'>
 
@@ -106,7 +117,7 @@ export function TerritoryPage(props) {
                         territorydata.placedSources.map(
                             source => {
                                 return (
-                                    <ListItemButton className='listitem-dark'>
+                                    <ListItemButton className='listitem-dark' onClick={() => {onPressedSource(source.name)}}>
                                         <ListItemText primary={source.name} />
                                     </ListItemButton>
                                 )

@@ -1,10 +1,13 @@
+import * as React from 'react';
 import logo from './logo.svg';
 import './css/App.css';
-import {Tester} from './view/homepage.js';
 import {TerritoryPage} from './view/territorypage';
 import {SourcePage} from './view/sourcepage';
+import {HomePage} from './view/homepage';
 
 function App() {
+
+  const [pageid, setPageid] = React.useState(0);
 
   var testdata_territory = {
     name: "Campania",
@@ -35,37 +38,53 @@ function App() {
     placedTerritories: [{name: "Italy", address: "dbpedia:italy"}, {name: "Romania", address: "dbpedia:romania"}]
   }
 
-  // RETURN FOR TERRITORY PAGE
-  /*
-  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <TerritoryPage 
-          name={testdata_territory.name} 
-          definition = {testdata_territory.definition}
-          description = {testdata_territory.description} 
-          sources = {testdata_territory.placedSources}
-          criteria = {testdata_territory.criterias}
-          companies = {testdata_territory.placedCompanies}
-        />
-      </header>
-    </div>
-  );
-  
-  */
+  var homedata_source = {
+    t: [{name: "Italy", address: "dbpedia:italy"}, {name: "Romania", address: "dbpedia:romania"}, {name: "Russia", address: "dbpedia:russia"}],
+    s: [{name: "Wind Power", address: "dbpedia:wind_power"}]
+  }
 
-  // RETURN FOR SOURCE PAGE
+  
+  var changePage = (page_id, list_index) => {
+    // IN SELECTED YOU HAVE THE SELECTED OBJECT
+    let selected = null;
+    if (page_id == 1) {
+      var territories = homedata_source.t;
+      selected = territories[list_index];
+    } else if (page_id == 2) {
+      var sources = homedata_source.s;
+      selected = sources[list_index];
+    }
+    setPageid(page_id);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <SourcePage 
-          name={testdata_source.name} 
-          definition = {testdata_source.definition}
-          description = {testdata_source.description} 
-          criteria = {testdata_source.criterias}
-          territories = {testdata_source.placedTerritories}
-        />
+        <div>
+          {
+            pageid == 0 ? <HomePage territories={homedata_source.t} sources={homedata_source.s} changePageCallback={changePage}/>
+            : pageid == 1 ?
+              <TerritoryPage 
+                name={testdata_territory.name} 
+                definition = {testdata_territory.definition}
+                description = {testdata_territory.description} 
+                sources = {testdata_territory.placedSources}
+                criteria = {testdata_territory.criterias}
+                companies = {testdata_territory.placedCompanies}
+                changePageCallback={changePage}
+              />
+            : pageid == 2 ?
+              <SourcePage 
+                name={testdata_source.name} 
+                definition = {testdata_source.definition}
+                description = {testdata_source.description} 
+                criteria = {testdata_source.criterias}
+                territories = {testdata_source.placedTerritories}
+                changePageCallback={changePage}
+              />
+            : <div></div>
+          }
+        </div>
       </header>
     </div>
   );
