@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import './css/App.css';
 import {Tester} from './view/homepage.js';
 import {TerritoryPage} from './view/territorypage';
+import {SourcePage} from './view/sourcepage';
 
 function App() {
 
   var testdata = {
-    name: "Here goes the territory name",
+    name: "Here goes the source name",
     description: "AUIBDAUWI B UIAB DUIA BDUIWAB DIAW NDUIBA IFBWAIUO DBAWUI DBWAUI BDWAUI BDWAUI DNWAIO DBWAUID BAWIO FNBUI AWU BIUO ANW DIOWABFUWA NIOAW"
   }
 

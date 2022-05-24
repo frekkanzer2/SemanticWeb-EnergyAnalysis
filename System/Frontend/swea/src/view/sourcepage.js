@@ -10,9 +10,9 @@ import ListItemText from '@mui/material/ListItemText';
 import '../css/page.css';
 import { Space8, Space12, Space16 } from "../utils/spacing";
 
-export function TerritoryPage(props) {
-
-    var territorydata = {
+export function SourcePage(props) {
+    
+    var sourcedata = {
         name: props.name,
         description: props.description
     }
@@ -39,45 +39,29 @@ export function TerritoryPage(props) {
         setOpen_technical(!open_technical);
     };
 
-    return(
+    return (
         <Container maxWidth="xl" className='pageContainer'>
-
             <Typography variant="h3" component="div" gutterBottom>
-                {territorydata.name}
+                {sourcedata.name}
             </Typography>
             <Space8/>
             
             <Typography variant="h5" component="div" gutterBottom>
                 Description
             </Typography>
-            <Typography variant="caption" component="div" gutterBottom>
-            What is a territory?
-            </Typography>
             
             <Container maxWidth="sm" style={{marginLeft: 0}}>
                 <Typography variant="body1" component="div" gutterBottom>
-                    {territorydata.description}
+                    {sourcedata.description}
                 </Typography>
             </Container>
             <Space16/>
 
-            <Typography variant="caption" component="div" gutterBottom>
-            About {territorydata.name}
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0}}>
-                <Typography variant="body1" component="div" gutterBottom>
-                    {territorydata.description}
-                </Typography>
-            </Container>
-            <Space16/>
-            
             <Typography variant="h5" component="div" gutterBottom>
-                Sources
+                Territories
             </Typography>
-
             <Typography variant="caption" component="div" gutterBottom>
-                Which sources you can use in {territorydata.name} to produce energy
+                Where you can use {sourcedata.name}
             </Typography>
             
             <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
@@ -87,23 +71,22 @@ export function TerritoryPage(props) {
                 aria-labelledby="nested-list-subheader"
                 >
                 <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Source 1" />
+                    <ListItemText primary="Territory 1" />
                 </ListItemButton>
                 <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Source 2" />
+                    <ListItemText primary="Territory 2" />
                 </ListItemButton>
                 <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Source 3" />
+                    <ListItemText primary="Territory 3" />
                 </ListItemButton>
                 </List>
             </Container>
-            
+
             <Typography variant="h5" component="div" gutterBottom>
                 Utilization Criteria
             </Typography>
-
             <Typography variant="caption" component="div" gutterBottom>
-                It's possible to use the listed sources in {territorydata.name} according to the following criteria
+            It's possible to use {sourcedata.name} in a territory according to the following criteria
             </Typography>
             
             <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
@@ -167,32 +150,6 @@ export function TerritoryPage(props) {
                     </ListItemButton>
                     </List>
                 </Collapse>
-                </List>
-            </Container>
-            
-            <Typography variant="h5" component="div" gutterBottom>
-                Investor Companies
-            </Typography>
-
-            <Typography variant="caption" component="div" gutterBottom>
-                Which companies use sources and produce energy in {territorydata.name}
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
-                <List
-                sx={{ width: '100%' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                >
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Company 1" />
-                </ListItemButton>
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Company 2" />
-                </ListItemButton>
-                <ListItemButton className='listitem-dark'>
-                    <ListItemText primary="Company 3" />
-                </ListItemButton>
                 </List>
             </Container>
 
