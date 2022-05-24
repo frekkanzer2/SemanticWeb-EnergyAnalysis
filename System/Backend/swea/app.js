@@ -9,8 +9,8 @@ app.use(body_parser.json());
 app.use(corspolicy());
 
 // Making routes available
-const tryRoute = require("./routes/try");
-app.use('', tryRoute);
+const Routes = require("./routes/Routes");
+app.use('', Routes);
 
 // App listening on port 8080
 const port = process.env.PORT || 8080

@@ -10,7 +10,7 @@ exports.test = async (req, res, next) => {
         SELECT ?o WHERE {
             <http://dbpedia.org/resource/Alfa_Romeo_1900> <http://www.w3.org/2002/07/owl#sameAs> ?o.
         } LIMIT 3`, {
-        sources: ['https://fragments.dbpedia.org/2015/en'],
+        sources: ['https://dbpedia.org/sparql'],
     });
 
     bindingsStream.on('data', (binding) => {
