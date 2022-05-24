@@ -30,13 +30,15 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by
 :covered_by rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :located_in ;
+            rdf:type owl:InverseFunctionalProperty ;
             rdfs:domain :Territory ;
             rdfs:range :Company .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by
 :determined_by rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :determines ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
                owl:inverseOf :determines ;
                rdfs:domain :Utilization_Criteria ;
                rdfs:range :Territory .
@@ -88,6 +90,7 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in
 :located_in rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:InverseFunctionalProperty ;
             rdfs:domain :Company ;
             rdfs:range :Territory .
 
@@ -202,11 +205,6 @@
          rdfs:seeAlso <https://dbpedia.org/page/Measurement> .
 
 
-###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Power_Plant
-:Power_Plant rdf:type owl:Class ;
-             rdfs:seeAlso "https://dbpedia.org/page/Power_station" .
-
-
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Price
 :Price rdf:type owl:Class ;
        rdfs:seeAlso <https://dbpedia.org/page/Price> .
@@ -235,29 +233,47 @@
                                                :Renewable_Energy_Sources .
 
 
-###  http://dbpedia.org/resource/Campania
-<http://dbpedia.org/resource/Campania> rdf:type owl:NamedIndividual ,
-                                                :Territory .
+###  http://dbpedia.org/resource/Canada
+<http://dbpedia.org/resource/Canada> rdf:type owl:NamedIndividual ,
+                                              :Territory .
 
 
-###  http://dbpedia.org/resource/Emilia-Romagna
-<http://dbpedia.org/resource/Emilia-Romagna> rdf:type owl:NamedIndividual ,
-                                                      :Territory .
+###  http://dbpedia.org/resource/Denmark
+<http://dbpedia.org/resource/Denmark> rdf:type owl:NamedIndividual ,
+                                               :Territory .
 
 
 ###  http://dbpedia.org/resource/Enel
 <http://dbpedia.org/resource/Enel> rdf:type owl:NamedIndividual ,
-                                            :Company .
+                                            :Company ;
+                                   :located_in <http://dbpedia.org/resource/Italy> ;
+                                   :produce_energy_with <http://dbpedia.org/resource/Solar_energy> ,
+                                                        <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Falck_Renewables
 <http://dbpedia.org/resource/Falck_Renewables> rdf:type owl:NamedIndividual ,
-                                                        :Company .
+                                                        :Company ;
+                                               :located_in <http://dbpedia.org/resource/Canada> ;
+                                               :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                                    <http://dbpedia.org/resource/Geothermal_energy> .
 
 
 ###  http://dbpedia.org/resource/First_Solar
 <http://dbpedia.org/resource/First_Solar> rdf:type owl:NamedIndividual ,
-                                                   :Company .
+                                                   :Company ;
+                                          :located_in <http://dbpedia.org/resource/Germany> ,
+                                                      <http://dbpedia.org/resource/Italy> ,
+                                                      <http://dbpedia.org/resource/United_States> ;
+                                          :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                               <http://dbpedia.org/resource/Hydropower> ,
+                                                               <http://dbpedia.org/resource/Solar_energy> ,
+                                                               <http://dbpedia.org/resource/Wind_power> .
+
+
+###  http://dbpedia.org/resource/France
+<http://dbpedia.org/resource/France> rdf:type owl:NamedIndividual ,
+                                              :Territory .
 
 
 ###  http://dbpedia.org/resource/Geothermal_energy
@@ -265,14 +281,26 @@
                                                          :Renewable_Energy_Sources .
 
 
+###  http://dbpedia.org/resource/Germany
+<http://dbpedia.org/resource/Germany> rdf:type owl:NamedIndividual ,
+                                               :Territory .
+
+
 ###  http://dbpedia.org/resource/Hydropower
 <http://dbpedia.org/resource/Hydropower> rdf:type owl:NamedIndividual ,
                                                   :Renewable_Energy_Sources .
 
 
+###  http://dbpedia.org/resource/Italy
+<http://dbpedia.org/resource/Italy> rdf:type owl:NamedIndividual ,
+                                             :Territory .
+
+
 ###  http://dbpedia.org/resource/NextEra_Energy
 <http://dbpedia.org/resource/NextEra_Energy> rdf:type owl:NamedIndividual ,
-                                                      :Company .
+                                                      :Company ;
+                                             :located_in <http://dbpedia.org/resource/Denmark> ;
+                                             :produce_energy_with <http://dbpedia.org/resource/Solar_energy> .
 
 
 ###  http://dbpedia.org/resource/Nuclear_fusion
@@ -282,32 +310,50 @@
 
 ###  http://dbpedia.org/resource/Ormat_Technologies
 <http://dbpedia.org/resource/Ormat_Technologies> rdf:type owl:NamedIndividual ,
-                                                          :Company .
-
-
-###  http://dbpedia.org/resource/Salerno
-<http://dbpedia.org/resource/Salerno> rdf:type owl:NamedIndividual ,
-                                               :Territory .
+                                                          :Company ;
+                                                 :located_in <http://dbpedia.org/resource/Canada> ,
+                                                             <http://dbpedia.org/resource/France> ,
+                                                             <http://dbpedia.org/resource/Germany> ;
+                                                 :produce_energy_with <http://dbpedia.org/resource/Hydropower> ,
+                                                                      <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Solar_energy
 <http://dbpedia.org/resource/Solar_energy> rdf:type owl:NamedIndividual ,
-                                                    :Renewable_Energy_Sources .
+                                                    :Renewable_Energy_Sources ;
+                                           :used_based_on :Photovoltaic_Grid_Parity .
+
+
+###  http://dbpedia.org/resource/Solar_panel
+<http://dbpedia.org/resource/Solar_panel> rdf:type owl:NamedIndividual ,
+                                                   :Device .
+
+
+###  http://dbpedia.org/resource/United_Kingdom
+<http://dbpedia.org/resource/United_Kingdom> rdf:type owl:NamedIndividual ,
+                                                      :Territory .
+
+
+###  http://dbpedia.org/resource/United_States
+<http://dbpedia.org/resource/United_States> rdf:type owl:NamedIndividual ,
+                                                     :Territory .
 
 
 ###  http://dbpedia.org/resource/Verbund
 <http://dbpedia.org/resource/Verbund> rdf:type owl:NamedIndividual ,
-                                               :Company .
+                                               :Company ;
+                                      :located_in <http://dbpedia.org/resource/Italy> ,
+                                                  <http://dbpedia.org/resource/United_States> ;
+                                      :produce_energy_with <http://dbpedia.org/resource/Geothermal_energy> ,
+                                                           <http://dbpedia.org/resource/Hydropower> ,
+                                                           <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Vestas
 <http://dbpedia.org/resource/Vestas> rdf:type owl:NamedIndividual ,
-                                              :Company .
-
-
-###  http://dbpedia.org/resource/Vietri_sul_Mare
-<http://dbpedia.org/resource/Vietri_sul_Mare> rdf:type owl:NamedIndividual ,
-                                                       :Territory .
+                                              :Company ;
+                                     :located_in <http://dbpedia.org/resource/United_Kingdom> ;
+                                     :produce_energy_with <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Wind_power
@@ -317,11 +363,22 @@
 
 ###  http://dbpedia.org/resource/Edison_(company)
 <http://dbpedia.org/resource/Edison_(company)> rdf:type owl:NamedIndividual ,
-                                                        :Company .
+                                                        :Company ;
+                                               :located_in <http://dbpedia.org/resource/France> ,
+                                                           <http://dbpedia.org/resource/Italy> ;
+                                               :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                                    <http://dbpedia.org/resource/Hydropower> ,
+                                                                    <http://dbpedia.org/resource/Solar_energy> .
 
 
-###  https://dbpedia.org/resource/Salerno
-<https://dbpedia.org/resource/Salerno> rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Photovoltaic_Grid_Parity
+:Photovoltaic_Grid_Parity rdf:type owl:NamedIndividual ,
+                                   :Utilization_Criteria ;
+                          :determined_by <http://dbpedia.org/resource/Italy> ;
+                          :featured_by_device <http://dbpedia.org/resource/Solar_panel> ;
+                          :criteria_type "Economic" ;
+                          :description "The reduction of production costs has greatly helped this sector, to the point that in recent years we have managed to achieve photovoltaic Grid Parity: that is, the cost of producing electricity using solar panels is now equal to or less than the cost of purchasing energy produced from fossil fuels." ;
+                          :source "https://www.enelgreenpower.com/learning-hub/renewable-energies/solar-energy/solar-energy-italy" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
