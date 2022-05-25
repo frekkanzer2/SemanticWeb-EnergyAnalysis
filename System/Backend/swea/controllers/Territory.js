@@ -305,9 +305,6 @@ exports.singleCountryCompaniesRelated = async (req, res, next) => {
     
     const countryRes = req.query.res;
     const result = [];
-    
- 
-
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -344,13 +341,14 @@ exports.singleCountryCompaniesRelated = async (req, res, next) => {
         console.log(jsonData)
 
         result.push(jsonData);
+        
     });
 
     bindingsStream.on('end', () => {
         // The data-listener will not be called anymore once we get here.
         console.log("Ended");
 
-        return res.json({sources: result});
+        return res.json({companies: result});
 
     });
 

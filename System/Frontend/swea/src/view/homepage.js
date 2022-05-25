@@ -17,6 +17,50 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+export function PreLoadingPage(props) {
+
+  return (
+    <Container sx={{marginTop: 4, marginLeft: 0}}>
+
+      <TableContainer component={Paper} sx={{ maxWidth: 260 }} className="table-dark">
+        <Table aria-label="" className="table-dark">
+          <TableHead>
+            <TableRow>
+              <TableCell style={{paddingBottom:0}}>
+                <Typography variant="h4" component="div" gutterBottom sx={{color: "#FFFFFF", paddingLeft:2}}>
+                    {"Loading"}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+              <TableRow
+                key={alert}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="td" scope="row" style={{verticalAlign: "top", padding:0, paddingTop:16}}>
+                  <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
+                    <List
+                    sx={{ width: '90%' }}
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    >
+                      <ListItemButton className='table-dark'>
+                        <ListItemText primary={"Please wait"} sx={{color: "#FFFFFF"}} />
+                      </ListItemButton>
+                    </List>
+                  </Container>
+                </TableCell>
+              </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+    </Container>
+  );
+
+}
+
 export function HomePage(props) {
 
   var callback_changePage = props.changePageCallback;

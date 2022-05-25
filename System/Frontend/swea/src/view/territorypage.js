@@ -9,6 +9,11 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import ListItemText from '@mui/material/ListItemText';
 import '../css/page.css';
 import { Space8, Space12, Space16 } from "../utils/spacing";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import { CardActionArea } from '@mui/material';
+import CardMedia from '@mui/material/CardMedia';
 
 export function TerritoryPage(props) {
 
@@ -22,7 +27,8 @@ export function TerritoryPage(props) {
         crit_pol: [],
         crit_soc: [],
         crit_tec: [],
-        placedCompanies: [] // array of {name: STRING, address: STRING} DEF 1 is source name; 2 is semantic resource address
+        placedCompanies: [], // array of {name: STRING, address: STRING} DEF 1 is source name; 2 is semantic resource address
+        thumbnail: props.image
     }
 
     territorydata.crit_amb = props.criteria[0];
@@ -69,225 +75,258 @@ export function TerritoryPage(props) {
     return(
         <Container maxWidth="xl" className='pageContainer'>
 
-            <Typography variant="h3" component="div" gutterBottom>
-                {territorydata.name}
-            </Typography>
-            <Space8/>
-            
-            <Typography variant="h5" component="div" gutterBottom>
-                Description
-            </Typography>
-            <Typography variant="caption" component="div" gutterBottom>
-            What is a territory?
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0}}>
-                <Typography variant="body1" component="div" gutterBottom>
-                    {territorydata.definition}
-                </Typography>
-            </Container>
-            <Space16/>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={7}>
+                            
+                        <Typography variant="h3" component="div" gutterBottom>
+                            {territorydata.name}
+                        </Typography>
+                        <Space8/>
+                        
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Description
+                        </Typography>
+                        <Typography variant="caption" component="div" gutterBottom>
+                        What is a territory?
+                        </Typography>
+                        
+                        <Container maxWidth="xl" style={{marginLeft: 0}}>
+                            <Typography variant="body1" component="div" gutterBottom align='justify'>
+                                {territorydata.definition}
+                            </Typography>
+                        </Container>
+                        <Space16/>
 
-            <Typography variant="caption" component="div" gutterBottom>
-            About {territorydata.name}
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0}}>
-                <Typography variant="body1" component="div" gutterBottom>
-                    {territorydata.description}
-                </Typography>
-            </Container>
-            <Space16/>
-            
-            <Typography variant="h5" component="div" gutterBottom>
-                Sources
-            </Typography>
+                        <Typography variant="caption" component="div" gutterBottom>
+                        About {territorydata.name}
+                        </Typography>
+                        
+                        <Container maxWidth="xl" style={{marginLeft: 0}}>
+                            <Typography variant="body1" component="div" gutterBottom align='justify'>
+                                {territorydata.description}
+                            </Typography>
+                        </Container>
 
-            <Typography variant="caption" component="div" gutterBottom>
-                Which sources you can use in {territorydata.name} to produce energy
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
-                <List
-                sx={{ width: '100%' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                >
-                    {
-                        territorydata.placedSources.map(
-                            source => {
-                                return (
-                                    <ListItemButton className='listitem-dark' onClick={() => {onPressedSource(source.name)}}>
-                                        <ListItemText primary={source.name} />
+                    </Grid>
+                    <Grid item xs={5}>
+                        
+                        <Space16/> <Space16/> <Space16/> <Space16/> <Space16/>
+
+                        {
+                            (territorydata.thumbnail == null || territorydata.thumbnail == undefined || territorydata.thumbnail == "" || territorydata.thumbnail == " ")
+                            ? <div></div>
+                            : <Card className='image-right table-dark' sx={{ marginBottom: 2 }}>
+                                <CardActionArea>
+                                    <CardMedia sx={{ height: 120, objectFit: 'contain' }}
+                                    component="img"
+                                    image={territorydata.thumbnail}
+                                    />
+                                </CardActionArea>
+                            </Card>
+                        }
+
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Sources
+                        </Typography>
+
+                        <Typography variant="caption" component="div" gutterBottom>
+                            Which sources you can use in {territorydata.name} to produce energy
+                        </Typography>
+                        
+                        <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
+                            <List
+                            sx={{ width: '100%' }}
+                            component="nav"
+                            aria-labelledby="nested-list-subheader"
+                            >
+                                {
+                                    territorydata.placedSources.length > 0 ?
+                                    territorydata.placedSources.map(
+                                        source => {
+                                            return (
+                                                <ListItemButton className='listitem-dark' onClick={() => {onPressedSource(source.name)}}>
+                                                    <ListItemText primary={source.name} />
+                                                </ListItemButton>
+                                            )
+                                        }
+                                    ) :
+                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                        <ListItemText primary={"Empty"} />
                                     </ListItemButton>
-                                )
+                                }
+                            </List>
+                        </Container>
+                        
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Utilization Criteria
+                        </Typography>
+
+                        <Typography variant="caption" component="div" gutterBottom>
+                            It's possible to use the listed sources in {territorydata.name} according to the following criteria
+                        </Typography>
+                        
+                        <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
+                            <List
+                            sx={{ width: '100%' }}
+                            component="nav"
+                            aria-labelledby="nested-list-subheader"
+                            >
+                            <ListItemButton onClick={handleClick_ambiental} className='listitem-dark'>
+                                <ListItemText primary="Ambiental Criteria" />
+                                {open_ambiental ? <ExpandLess /> : <ExpandMore />}
+                            </ListItemButton>
+                            <Collapse in={open_ambiental} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    {
+                                        territorydata.crit_amb.length > 0 ?
+                                            territorydata.crit_amb.map(
+                                                crit => {
+                                                    return (
+                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                            <ListItemText primary={"- " + crit.criteria_description} />
+                                                        </ListItemButton>
+                                                    )
+                                                }
+                                            )
+                                        :
+                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                <ListItemText primary={"Empty"} />
+                                            </ListItemButton>
+                                    }
+                                </List>
+                            </Collapse>
+                            <ListItemButton onClick={handleClick_finance} className='listitem-dark'>
+                                <ListItemText primary="Finance Criteria" />
+                                {open_finance ? <ExpandLess /> : <ExpandMore />}
+                            </ListItemButton>
+                            <Collapse in={open_finance} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>{
+                                    territorydata.crit_fin.length > 0 ?
+                                        territorydata.crit_fin.map(
+                                            crit => {
+                                                return (
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                    </ListItemButton>
+                                                )
+                                            }
+                                        )
+                                    :
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"Empty"} />
+                                        </ListItemButton>
+                                    }
+                                </List>
+                            </Collapse>
+                            <ListItemButton onClick={handleClick_political} className='listitem-dark'>
+                                <ListItemText primary="Political Criteria" />
+                                {open_political ? <ExpandLess /> : <ExpandMore />}
+                            </ListItemButton>
+                            <Collapse in={open_political} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>{
+                                    territorydata.crit_pol.length > 0 ?
+                                        territorydata.crit_pol.map(
+                                            crit => {
+                                                return (
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                    </ListItemButton>
+                                                )
+                                            }
+                                        )
+                                    :
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"Empty"} />
+                                        </ListItemButton>
+                                    }
+                                </List>
+                            </Collapse>
+                            <ListItemButton onClick={handleClick_social} className='listitem-dark'>
+                                <ListItemText primary="Social Criteria" />
+                                {open_social ? <ExpandLess /> : <ExpandMore />}
+                            </ListItemButton>
+                            <Collapse in={open_social} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    {
+                                        territorydata.crit_soc.length > 0 ?
+                                            territorydata.crit_soc.map(
+                                                crit => {
+                                                    return (
+                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                            <ListItemText primary={"- " + crit.criteria_description} />
+                                                        </ListItemButton>
+                                                    )
+                                                }
+                                            )
+                                        :
+                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                <ListItemText primary={"Empty"} />
+                                            </ListItemButton>
+                                    }
+                                </List>
+                            </Collapse>
+                            <ListItemButton onClick={handleClick_technical} className='listitem-dark'>
+                                <ListItemText primary="Technical Criteria" />
+                                {open_technical ? <ExpandLess /> : <ExpandMore />}
+                            </ListItemButton>
+                            <Collapse in={open_technical} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>{
+                                    territorydata.crit_tec.length > 0 ?
+                                        territorydata.crit_tec.map(
+                                            crit => {
+                                                return (
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                    </ListItemButton>
+                                                )
+                                            }
+                                        )
+                                    :
+                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                            <ListItemText primary={"Empty"} />
+                                        </ListItemButton>
+                                    }
+                                </List>
+                            </Collapse>
+                            </List>
+                        </Container>
+                        
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Investor Companies
+                        </Typography>
+
+                        <Typography variant="caption" component="div" gutterBottom>
+                            Which companies use sources and produce energy in {territorydata.name}
+                        </Typography>
+                        
+                        <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
+                            <List
+                            sx={{ width: '100%' }}
+                            component="nav"
+                            aria-labelledby="nested-list-subheader"
+                            >
+                            {
+                                territorydata.placedCompanies.length > 0 ?
+                                territorydata.placedCompanies.map(
+                                    company => {
+                                        return (
+                                            <ListItemButton className='listitem-dark'>
+                                                <ListItemText primary={company.name} />
+                                            </ListItemButton>
+                                        )
+                                    }
+                                ) :
+                                <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                    <ListItemText primary={"Empty"} />
+                                </ListItemButton>
                             }
-                        )
-                    }
-                </List>
-            </Container>
-            
-            <Typography variant="h5" component="div" gutterBottom>
-                Utilization Criteria
-            </Typography>
+                            </List>
+                        </Container>
 
-            <Typography variant="caption" component="div" gutterBottom>
-                It's possible to use the listed sources in {territorydata.name} according to the following criteria
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
-                <List
-                sx={{ width: '100%' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                >
-                <ListItemButton onClick={handleClick_ambiental} className='listitem-dark'>
-                    <ListItemText primary="Ambiental Criteria" />
-                    {open_ambiental ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open_ambiental} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        {
-                            territorydata.crit_amb.length > 0 ?
-                                territorydata.crit_amb.map(
-                                    crit => {
-                                        return (
-                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                <ListItemText primary={"- " + crit} />
-                                            </ListItemButton>
-                                        )
-                                    }
-                                )
-                            :
-                                <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                    <ListItemText primary={"Empty"} />
-                                </ListItemButton>
-                        }
-                    </List>
-                </Collapse>
-                <ListItemButton onClick={handleClick_finance} className='listitem-dark'>
-                    <ListItemText primary="Finance Criteria" />
-                    {open_finance ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open_finance} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>{
-                        territorydata.crit_fin.length > 0 ?
-                            territorydata.crit_fin.map(
-                                crit => {
-                                    return (
-                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                            <ListItemText primary={"- " + crit} />
-                                        </ListItemButton>
-                                    )
-                                }
-                            )
-                        :
-                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                <ListItemText primary={"Empty"} />
-                            </ListItemButton>
-                        }
-                    </List>
-                </Collapse>
-                <ListItemButton onClick={handleClick_political} className='listitem-dark'>
-                    <ListItemText primary="Political Criteria" />
-                    {open_political ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open_political} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>{
-                        territorydata.crit_pol.length > 0 ?
-                            territorydata.crit_pol.map(
-                                crit => {
-                                    return (
-                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                            <ListItemText primary={"- " + crit} />
-                                        </ListItemButton>
-                                    )
-                                }
-                            )
-                        :
-                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                <ListItemText primary={"Empty"} />
-                            </ListItemButton>
-                        }
-                    </List>
-                </Collapse>
-                <ListItemButton onClick={handleClick_social} className='listitem-dark'>
-                    <ListItemText primary="Social Criteria" />
-                    {open_social ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open_social} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        {
-                            territorydata.crit_soc.length > 0 ?
-                                territorydata.crit_soc.map(
-                                    crit => {
-                                        return (
-                                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                <ListItemText primary={"- " + crit} />
-                                            </ListItemButton>
-                                        )
-                                    }
-                                )
-                            :
-                                <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                    <ListItemText primary={"Empty"} />
-                                </ListItemButton>
-                        }
-                    </List>
-                </Collapse>
-                <ListItemButton onClick={handleClick_technical} className='listitem-dark'>
-                    <ListItemText primary="Technical Criteria" />
-                    {open_technical ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open_technical} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>{
-                        territorydata.crit_tec.length > 0 ?
-                            territorydata.crit_tec.map(
-                                crit => {
-                                    return (
-                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                            <ListItemText primary={"- " + crit} />
-                                        </ListItemButton>
-                                    )
-                                }
-                            )
-                        :
-                            <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                <ListItemText primary={"Empty"} />
-                            </ListItemButton>
-                        }
-                    </List>
-                </Collapse>
-                </List>
-            </Container>
-            
-            <Typography variant="h5" component="div" gutterBottom>
-                Investor Companies
-            </Typography>
-
-            <Typography variant="caption" component="div" gutterBottom>
-                Which companies use sources and produce energy in {territorydata.name}
-            </Typography>
-            
-            <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
-                <List
-                sx={{ width: '100%' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                >
-                {
-                    territorydata.placedCompanies.map(
-                        company => {
-                            return (
-                                <ListItemButton className='listitem-dark'>
-                                    <ListItemText primary={company.name} />
-                                </ListItemButton>
-                            )
-                        }
-                    )
-                }
-                </List>
-            </Container>
+                    </Grid>
+                </Grid>
+            </Box>
 
         </Container>
     );

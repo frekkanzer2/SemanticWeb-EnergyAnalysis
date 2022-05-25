@@ -17,7 +17,7 @@ const myEngine = new QueryEngine();
 
 //All Country
 exports.allHomeCountryAndSources = async (req, res, next) => {
-    const result = []; 
+    const t = [], s = []; 
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -49,14 +49,14 @@ exports.allHomeCountryAndSources = async (req, res, next) => {
     bindingsStream.on('data', (binding) => {
         var jsonData = {};
         jsonData['name'] = binding.get('name').value;
-        jsonData['uri'] = binding.get('individual').value;
-        jsonData['type'] = binding.get('type').value;
-        
-        result.push(jsonData);
+        jsonData['address'] = binding.get('individual').value;
+        if (binding.get('type').value == "http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory")
+            t.push(jsonData);
+        else s.push(jsonData);
     });
 
     bindingsStream.on('end', () => {
-        return res.json({result:  result});
+        return res.json({territories: t, sources: s});
     });
 
     bindingsStream.on('error', (error) => {

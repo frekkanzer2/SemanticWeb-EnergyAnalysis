@@ -27,3 +27,8 @@
 .top-cell {
     vertical-align: top!important;
 }
+
+.image-right {
+    margin-left: auto; 
+    margin-right: 16px;
+}
