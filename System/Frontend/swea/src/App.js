@@ -62,6 +62,7 @@ function App() {
                   .then(
                     (result_delta) => {
                       builder.placedCompanies = result_delta.companies;
+                      console.log(builder);
                       setTerritory_data(builder);
                       setPageid(page_id);
                     },

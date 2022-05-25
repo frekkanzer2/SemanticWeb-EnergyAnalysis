@@ -357,7 +357,7 @@ exports.singleCountryCompaniesRelated = async (req, res, next) => {
         // The data-listener will not be called anymore once we get here.
         console.log("Ended");
 
-        return res.json({sources: result});
+        return res.json({companies: result});
 
     });
 

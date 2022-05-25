@@ -184,7 +184,7 @@ export function TerritoryPage(props) {
                                                 crit => {
                                                     return (
                                                         <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                            <ListItemText primary={"- " + crit.criteria_description} />
+                                                            <ListItemText primary={"- " + crit.criteria_name} />
                                                         </ListItemButton>
                                                     )
                                                 }
@@ -207,7 +207,7 @@ export function TerritoryPage(props) {
                                             crit => {
                                                 return (
                                                     <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                        <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
                                             }
@@ -230,7 +230,7 @@ export function TerritoryPage(props) {
                                             crit => {
                                                 return (
                                                     <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                        <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
                                             }
@@ -254,7 +254,7 @@ export function TerritoryPage(props) {
                                                 crit => {
                                                     return (
                                                         <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                            <ListItemText primary={"- " + crit.criteria_description} />
+                                                            <ListItemText primary={"- " + crit.criteria_name} />
                                                         </ListItemButton>
                                                     )
                                                 }
@@ -277,7 +277,7 @@ export function TerritoryPage(props) {
                                             crit => {
                                                 return (
                                                     <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
-                                                        <ListItemText primary={"- " + crit.criteria_description} />
+                                                        <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
                                             }
