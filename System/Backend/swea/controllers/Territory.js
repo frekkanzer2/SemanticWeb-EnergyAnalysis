@@ -143,7 +143,7 @@ exports.singleCountryInf = async (req, res, next) => {
 // Energy Source that could be exploited in a input territory
 exports.singleCountrySourcesRelated = async (req, res, next) => {
     
-    const countryRes = req.query.res;
+    const countryRes = req.query.res; 
     const result = [];
     var jsonData = {};
  
@@ -220,10 +220,11 @@ exports.singleCountryCriteriaRelated = async (req, res, next) => {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
 
-        SELECT ?criteria ?type ?source ?description
+        SELECT ?criteria ?type ?name ?source ?description
             WHERE {
                 <` + countryRes + `> swea:determines ?criteria.
                 OPTIONAL{?criteria swea:criteria_type ?type.}
+                OPTIONAL{?criteria swea:criteria_name ?name.}
                 OPTIONAL{?criteria swea:source ?source.}
                 OPTIONAL{?criteria swea:description ?description.}
             }
@@ -246,6 +247,12 @@ exports.singleCountryCriteriaRelated = async (req, res, next) => {
             jsonData['criteria_source'] = binding.get('source').value;
         } catch (error) {
             jsonData['criteria_source'] = ""
+        }
+
+        try {
+            jsonData['criteria_name'] = binding.get('name').value;
+        } catch (error) {
+            jsonData['criteria_name'] = ""
         }
     
         
@@ -305,6 +312,9 @@ exports.singleCountryCompaniesRelated = async (req, res, next) => {
     
     const countryRes = req.query.res;
     const result = [];
+    
+ 
+
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -341,14 +351,13 @@ exports.singleCountryCompaniesRelated = async (req, res, next) => {
         console.log(jsonData)
 
         result.push(jsonData);
-        
-    });
+        });
 
     bindingsStream.on('end', () => {
         // The data-listener will not be called anymore once we get here.
         console.log("Ended");
 
-        return res.json({companies: result});
+        return res.json({sources: result});
 
     });
 

@@ -203,10 +203,11 @@ exports.singleSourceCriteriaRelated = async (req, res, next) => {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
 
-        SELECT ?criteria ?type ?source ?description
+        SELECT ?criteria ?type ?name ?source ?description
             WHERE {
                 <` + sourceRes + `> swea:used_based_on ?criteria.
                 OPTIONAL{?criteria swea:criteria_type ?type.}
+                OPTIONAL{?criteria swea:criteria_name ?name.}
                 OPTIONAL{?criteria swea:source ?source.}
                 OPTIONAL{?criteria swea:description ?description.}
             }
@@ -225,6 +226,12 @@ exports.singleSourceCriteriaRelated = async (req, res, next) => {
             jsonData['criteria'] = ""
         }
 
+        try {
+            jsonData['criteria_name'] = binding.get('name').value;
+        } catch (error) {
+            jsonData['criteria_name'] = ""
+        }
+        
         try {
             jsonData['criteria_source'] = binding.get('source').value;
         } catch (error) {
