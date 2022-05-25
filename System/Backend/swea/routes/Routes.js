@@ -10,8 +10,8 @@ router.get("/trytest", tryController.test);
 router.get("/localTest", tryController.localOntology);
 
 //home Routes
-router.get("/allResourcesAndTerritory", homeController.allCountryAndResources);
-
+router.get("/allHomeCountry", homeController.allHomeCountry);
+router.get("/allHomeSources", homeController.allHomeSources);
 //Territory Routes
 router.get("/allCountry", territoryController.allCountry);
 router.get("/singleCountryInformations", territoryController.singleCountryInf);
