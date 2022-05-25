@@ -13,51 +13,52 @@
 #################################################################
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_be_exploited_in
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_be_exploited_in> rdf:type owl:ObjectProperty ;
-                                                                              owl:inverseOf <http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit> .
+:can_be_exploited_in rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :can_exploit .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit> rdf:type owl:ObjectProperty .
+:can_exploit rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> rdf:type owl:ObjectProperty ;
-                                                                     owl:inverseOf <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> .
+:covered_by rdf:type owl:ObjectProperty ;
+            owl:inverseOf :located_in .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by> rdf:type owl:ObjectProperty ;
-                                                                        owl:inverseOf <http://www.semanticweb.org/abate/ontologies/2022/4/swea#determines> .
+:determined_by rdf:type owl:ObjectProperty ;
+               owl:inverseOf :determines .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#determines
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#determines> rdf:type owl:ObjectProperty .
+:determines rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_device
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_device> rdf:type owl:ObjectProperty .
+:featured_by_device rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#influences_the_use_of
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#influences_the_use_of> rdf:type owl:ObjectProperty ;
-                                                                                owl:inverseOf <http://www.semanticweb.org/abate/ontologies/2022/4/swea#used_based_on> .
+:influences_the_use_of rdf:type owl:ObjectProperty ;
+                       owl:inverseOf :used_based_on .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> rdf:type owl:ObjectProperty .
+:located_in rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> rdf:type owl:ObjectProperty .
+:produce_energy_with rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#used_based_on
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#used_based_on> rdf:type owl:ObjectProperty .
+:used_based_on rdf:type owl:ObjectProperty .
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty
-owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
+owl:topObjectProperty rdf:type owl:ObjectProperty ;
+                      owl:inverseOf owl:topObjectProperty ;
                       rdf:type owl:SymmetricProperty ,
                                owl:TransitiveProperty .
 
@@ -67,23 +68,23 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 #################################################################
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> rdf:type owl:DatatypeProperty .
+:SourceName rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> rdf:type owl:DatatypeProperty .
+:TerritoryName rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#criteria_type
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#criteria_type> rdf:type owl:DatatypeProperty .
+:criteria_type rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#description
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#description> rdf:type owl:DatatypeProperty .
+:description rdf:type owl:DatatypeProperty .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#source
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#source> rdf:type owl:DatatypeProperty .
+:source rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -91,23 +92,23 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 #################################################################
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> rdf:type owl:Class .
+:Company rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device> rdf:type owl:Class .
+:Device rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> rdf:type owl:Class .
+:Renewable_Energy_Sources rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> rdf:type owl:Class .
+:Territory rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria> rdf:type owl:Class .
+:Utilization_Criteria rdf:type owl:Class .
 
 
 #################################################################
@@ -116,186 +117,187 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 
 ###  http://dbpedia.org/resource/Biomass
 <http://dbpedia.org/resource/Biomass> rdf:type owl:NamedIndividual ,
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Biomass" .
+                                               :Renewable_Energy_Sources ;
+                                      :SourceName "Biomass" .
 
 
 ###  http://dbpedia.org/resource/Canada
 <http://dbpedia.org/resource/Canada> rdf:type owl:NamedIndividual ,
-                                              <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/Falck_Renewables> ,
-                                                                                                          <http://dbpedia.org/resource/Ormat_Technologies> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "Canada" .
+                                              :Territory ;
+                                     :covered_by <http://dbpedia.org/resource/Falck_Renewables> ,
+                                                 <http://dbpedia.org/resource/Ormat_Technologies> ;
+                                     :TerritoryName "Canada" .
 
 
 ###  http://dbpedia.org/resource/Denmark
 <http://dbpedia.org/resource/Denmark> rdf:type owl:NamedIndividual ,
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/NextEra_Energy> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "Denmark" .
+                                               :Territory ;
+                                      :covered_by <http://dbpedia.org/resource/NextEra_Energy> ;
+                                      :TerritoryName "Denmark" .
 
 
 ###  http://dbpedia.org/resource/Enel
 <http://dbpedia.org/resource/Enel> rdf:type owl:NamedIndividual ,
-                                            <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Italy> ;
-                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Solar_energy> ,
-                                                                                                                 <http://dbpedia.org/resource/Wind_power> .
+                                            :Company ;
+                                   :located_in <http://dbpedia.org/resource/Italy> ;
+                                   :produce_energy_with <http://dbpedia.org/resource/Solar_energy> ,
+                                                        <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Falck_Renewables
 <http://dbpedia.org/resource/Falck_Renewables> rdf:type owl:NamedIndividual ,
-                                                        <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Canada> ;
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Biomass> ,
-                                                                                                                             <http://dbpedia.org/resource/Geothermal_energy> .
+                                                        :Company ;
+                                               :located_in <http://dbpedia.org/resource/Canada> ;
+                                               :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                                    <http://dbpedia.org/resource/Geothermal_energy> .
 
 
 ###  http://dbpedia.org/resource/First_Solar
 <http://dbpedia.org/resource/First_Solar> rdf:type owl:NamedIndividual ,
-                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                          <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Germany> ,
-                                                                                                               <http://dbpedia.org/resource/Italy> ,
-                                                                                                               <http://dbpedia.org/resource/United_States> ;
-                                          <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Biomass> ,
-                                                                                                                        <http://dbpedia.org/resource/Hydropower> ,
-                                                                                                                        <http://dbpedia.org/resource/Solar_energy> ,
-                                                                                                                        <http://dbpedia.org/resource/Wind_power> .
+                                                   :Company ;
+                                          :located_in <http://dbpedia.org/resource/Germany> ,
+                                                      <http://dbpedia.org/resource/Italy> ,
+                                                      <http://dbpedia.org/resource/United_States> ;
+                                          :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                               <http://dbpedia.org/resource/Hydropower> ,
+                                                               <http://dbpedia.org/resource/Solar_energy> ,
+                                                               <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/France
 <http://dbpedia.org/resource/France> rdf:type owl:NamedIndividual ,
-                                              <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/Ormat_Technologies> ,
-                                                                                                          <http://dbpedia.org/resource/Edison_(company)> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "France" .
+                                              :Territory ;
+                                     :covered_by <http://dbpedia.org/resource/Ormat_Technologies> ,
+                                                 <http://dbpedia.org/resource/Edison_(company)> ;
+                                     :TerritoryName "France" .
 
 
 ###  http://dbpedia.org/resource/Geothermal_energy
 <http://dbpedia.org/resource/Geothermal_energy> rdf:type owl:NamedIndividual ,
-                                                         <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                                <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Geothermical Energy" .
+                                                         :Renewable_Energy_Sources ;
+                                                :SourceName "Geothermical Energy" .
 
 
 ###  http://dbpedia.org/resource/Germany
 <http://dbpedia.org/resource/Germany> rdf:type owl:NamedIndividual ,
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/First_Solar> ,
-                                                                                                           <http://dbpedia.org/resource/Ormat_Technologies> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "Germany" .
+                                               :Territory ;
+                                      :covered_by <http://dbpedia.org/resource/First_Solar> ,
+                                                  <http://dbpedia.org/resource/Ormat_Technologies> ;
+                                      :TerritoryName "Germany" .
 
 
 ###  http://dbpedia.org/resource/Hydropower
 <http://dbpedia.org/resource/Hydropower> rdf:type owl:NamedIndividual ,
-                                                  <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                         <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Hydropower" .
+                                                  :Renewable_Energy_Sources ;
+                                         :SourceName "Hydropower" .
 
 
 ###  http://dbpedia.org/resource/Italy
 <http://dbpedia.org/resource/Italy> rdf:type owl:NamedIndividual ,
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                    <http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit> <http://dbpedia.org/resource/Solar_energy> ;
-                                    <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/Enel> ,
-                                                                                                         <http://dbpedia.org/resource/First_Solar> ,
-                                                                                                         <http://dbpedia.org/resource/Verbund> ,
-                                                                                                         <http://dbpedia.org/resource/Edison_(company)> ;
-                                    <http://www.semanticweb.org/abate/ontologies/2022/4/swea#determines> <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Photovoltaic_Grid_Parity> ;
-                                    <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "Italy" .
+                                             :Territory ;
+                                    :can_exploit <http://dbpedia.org/resource/Solar_energy> ;
+                                    :covered_by <http://dbpedia.org/resource/Enel> ,
+                                                <http://dbpedia.org/resource/First_Solar> ,
+                                                <http://dbpedia.org/resource/Verbund> ,
+                                                <http://dbpedia.org/resource/Edison_(company)> ;
+                                    :determines :Photovoltaic_Grid_Parity ;
+                                    :TerritoryName "Italy" ;
+                                    rdfs:seeAlso "http://dbpedia.org/resource/Renewable_energy" .
 
 
 ###  http://dbpedia.org/resource/NextEra_Energy
 <http://dbpedia.org/resource/NextEra_Energy> rdf:type owl:NamedIndividual ,
-                                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Denmark> ;
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Solar_energy> .
+                                                      :Company ;
+                                             :located_in <http://dbpedia.org/resource/Denmark> ;
+                                             :produce_energy_with <http://dbpedia.org/resource/Solar_energy> .
 
 
 ###  http://dbpedia.org/resource/Nuclear_fusion
 <http://dbpedia.org/resource/Nuclear_fusion> rdf:type owl:NamedIndividual ,
-                                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Nuclear_fusion" .
+                                                      :Renewable_Energy_Sources ;
+                                             :SourceName "Nuclear_fusion" .
 
 
 ###  http://dbpedia.org/resource/Ormat_Technologies
 <http://dbpedia.org/resource/Ormat_Technologies> rdf:type owl:NamedIndividual ,
-                                                          <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                                 <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Canada> ,
-                                                                                                                      <http://dbpedia.org/resource/France> ,
-                                                                                                                      <http://dbpedia.org/resource/Germany> ;
-                                                 <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Hydropower> ,
-                                                                                                                               <http://dbpedia.org/resource/Wind_power> .
+                                                          :Company ;
+                                                 :located_in <http://dbpedia.org/resource/Canada> ,
+                                                             <http://dbpedia.org/resource/France> ,
+                                                             <http://dbpedia.org/resource/Germany> ;
+                                                 :produce_energy_with <http://dbpedia.org/resource/Hydropower> ,
+                                                                      <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Solar_energy
 <http://dbpedia.org/resource/Solar_energy> rdf:type owl:NamedIndividual ,
-                                                    <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                           <http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_be_exploited_in> <http://dbpedia.org/resource/Italy> ;
-                                           <http://www.semanticweb.org/abate/ontologies/2022/4/swea#used_based_on> <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Photovoltaic_Grid_Parity> ;
-                                           <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Solar Energy" .
+                                                    :Renewable_Energy_Sources ;
+                                           :can_be_exploited_in <http://dbpedia.org/resource/Italy> ;
+                                           :used_based_on :Photovoltaic_Grid_Parity ;
+                                           :SourceName "Solar Energy" .
 
 
 ###  http://dbpedia.org/resource/Solar_panel
 <http://dbpedia.org/resource/Solar_panel> rdf:type owl:NamedIndividual ,
-                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device> .
+                                                   :Device .
 
 
 ###  http://dbpedia.org/resource/United_Kingdom
 <http://dbpedia.org/resource/United_Kingdom> rdf:type owl:NamedIndividual ,
-                                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/Vestas> ;
-                                             <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "United Kingdom" .
+                                                      :Territory ;
+                                             :covered_by <http://dbpedia.org/resource/Vestas> ;
+                                             :TerritoryName "United Kingdom" .
 
 
 ###  http://dbpedia.org/resource/United_States
 <http://dbpedia.org/resource/United_States> rdf:type owl:NamedIndividual ,
-                                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory> ;
-                                            <http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by> <http://dbpedia.org/resource/First_Solar> ,
-                                                                                                                 <http://dbpedia.org/resource/Verbund> ;
-                                            <http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName> "United States" .
+                                                     :Territory ;
+                                            :covered_by <http://dbpedia.org/resource/First_Solar> ,
+                                                        <http://dbpedia.org/resource/Verbund> ;
+                                            :TerritoryName "United States" .
 
 
 ###  http://dbpedia.org/resource/Verbund
 <http://dbpedia.org/resource/Verbund> rdf:type owl:NamedIndividual ,
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/Italy> ,
-                                                                                                           <http://dbpedia.org/resource/United_States> ;
-                                      <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Geothermal_energy> ,
-                                                                                                                    <http://dbpedia.org/resource/Hydropower> ,
-                                                                                                                    <http://dbpedia.org/resource/Wind_power> .
+                                               :Company ;
+                                      :located_in <http://dbpedia.org/resource/Italy> ,
+                                                  <http://dbpedia.org/resource/United_States> ;
+                                      :produce_energy_with <http://dbpedia.org/resource/Geothermal_energy> ,
+                                                           <http://dbpedia.org/resource/Hydropower> ,
+                                                           <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Vestas
 <http://dbpedia.org/resource/Vestas> rdf:type owl:NamedIndividual ,
-                                              <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/United_Kingdom> ;
-                                     <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Wind_power> .
+                                              :Company ;
+                                     :located_in <http://dbpedia.org/resource/United_Kingdom> ;
+                                     :produce_energy_with <http://dbpedia.org/resource/Wind_power> .
 
 
 ###  http://dbpedia.org/resource/Wind_power
 <http://dbpedia.org/resource/Wind_power> rdf:type owl:NamedIndividual ,
-                                                  <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Renewable_Energy_Sources> ;
-                                         <http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName> "Wind Power" .
+                                                  :Renewable_Energy_Sources ;
+                                         :SourceName "Wind Power" .
 
 
 ###  http://dbpedia.org/resource/Edison_(company)
 <http://dbpedia.org/resource/Edison_(company)> rdf:type owl:NamedIndividual ,
-                                                        <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company> ;
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in> <http://dbpedia.org/resource/France> ,
-                                                                                                                    <http://dbpedia.org/resource/Italy> ;
-                                               <http://www.semanticweb.org/abate/ontologies/2022/4/swea#produce_energy_with> <http://dbpedia.org/resource/Biomass> ,
-                                                                                                                             <http://dbpedia.org/resource/Hydropower> ,
-                                                                                                                             <http://dbpedia.org/resource/Solar_energy> .
+                                                        :Company ;
+                                               :located_in <http://dbpedia.org/resource/France> ,
+                                                           <http://dbpedia.org/resource/Italy> ;
+                                               :produce_energy_with <http://dbpedia.org/resource/Biomass> ,
+                                                                    <http://dbpedia.org/resource/Hydropower> ,
+                                                                    <http://dbpedia.org/resource/Solar_energy> .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#Photovoltaic_Grid_Parity
-<http://www.semanticweb.org/abate/ontologies/2022/4/swea#Photovoltaic_Grid_Parity> rdf:type owl:NamedIndividual ,
-                                                                                            <http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria> ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#determined_by> <http://dbpedia.org/resource/Italy> ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#featured_by_device> <http://dbpedia.org/resource/Solar_panel> ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#influences_the_use_of> <http://dbpedia.org/resource/Solar_energy> ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#criteria_type> "Economic" ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#description> "The reduction of production costs has greatly helped this sector, to the point that in recent years we have managed to achieve photovoltaic Grid Parity: that is, the cost of producing electricity using solar panels is now equal to or less than the cost of purchasing energy produced from fossil fuels." ;
-                                                                                   <http://www.semanticweb.org/abate/ontologies/2022/4/swea#source> "https://www.enelgreenpower.com/learning-hub/renewable-energies/solar-energy/solar-energy-italy" .
+:Photovoltaic_Grid_Parity rdf:type owl:NamedIndividual ,
+                                   :Utilization_Criteria ;
+                          :determined_by <http://dbpedia.org/resource/Italy> ;
+                          :featured_by_device <http://dbpedia.org/resource/Solar_panel> ;
+                          :influences_the_use_of <http://dbpedia.org/resource/Solar_energy> ;
+                          :criteria_type "Economic" ;
+                          :description "The reduction of production costs has greatly helped this sector, to the point that in recent years we have managed to achieve photovoltaic Grid Parity: that is, the cost of producing electricity using solar panels is now equal to or less than the cost of purchasing energy produced from fossil fuels." ;
+                          :source "https://www.enelgreenpower.com/learning-hub/renewable-energies/solar-energy/solar-energy-italy" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

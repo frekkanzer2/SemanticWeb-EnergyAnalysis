@@ -1,14 +1,7 @@
 const QueryEngine = require('@comunica/query-sparql').QueryEngine;
 const myEngine = new QueryEngine();
 
-const TerritoryDescription = "A territory is an administrative division, usually an area that is under " +
-                            "the jurisdiction of a sovereign state. In most countries, a territory is an organized division " +
-                            "of an area that is controlled by a country but is not formally developed into, or incorporated into, "+
-                            "a political unit of the country that is of equal status to other political units that may often be referred" +
-                           " to by words such as \"provinces\" or \"regions\" or \"states\". " + 
-                           " In international politics, a territory is usually either the total area from which a state may extract " + 
-                           "power resources or any non-sovereign geographic area which has come under the authority of another government;" + 
-                           "which has not been granted the powers of self-government normally devolved to secondary territorial divisions; or both.";
+const EnergyDescription = "Renewable energy is energy that is collected from renewable resources that are naturally replenished on a human timescale. It includes sources such as sunlight, wind, rain, tides, waves, and geothermal heat. Renewable energy stands in contrast to fossil fuels, which are being used far more quickly than they are being replenished. Although most renewable energy sources are sustainable, some are not. For example, some biomass sources are considered unsustainable at current rates of exploitation. Renewable energy often provides energy in four important areas: electricity generation, air and water heating/cooling, transportation, and rural (off-grid) energy services. About 20% of humans' global energy consumption is renewables, including almost 30% of electricity. About 8% of energy consumption is traditional biomass, but this is declining. Over 4% of energy consumption is heat energy from modern renewables, such as solar water heating, and over 6% electricity. Globally there are over 10 million jobs associated with the renewable energy industries, with solar photovoltaics being the largest renewable employer. Renewable energy systems are rapidly becoming more efficient and cheaper and their share of total energy consumption is increasing, with a large majority of worldwide newly installed electricity capacity being renewable. In most countries, photovoltaic solar or onshore wind are the cheapest new-build electricity. Many nations around the world already have renewable energy contributing more than 20% of their energy supply. And many nations around the world already generate over half their electricity from renewables. National renewable energy markets are projected to continue to grow strongly in the coming decade and beyond.A few countries generate all their electricity using renewable energy.Renewable energy resources exist over wide geographical areas, in contrast to fossil fuels, which are concentrated in a limited number of countries. Deployment of renewable energy and energy efficiency technologies is resulting in significant energy security, climate change mitigation, and economic benefits. However renewables are being hindered by hundreds of billions of dollars of fossil fuel subsidies. In international public opinion surveys there is strong support for promoting renewable sources such as solar power and wind power. While many renewable energy projects are large-scale, renewable technologies are also suited to rural and remote areas and developing countries, where energy is often crucial in human development. As most of renewable energy technologies provide electricity, renewable energy is often deployed together with further electrification, which has several benefits: electricity can be converted to heat, can be converted into mechanical energy with high efficiency, and is clean at the point of consumption. In addition, electrification with renewable energy is more efficient and therefore leads to significant reductions in primary energy requirements. In 2021 China accounted for almost half of the increase in renewable electricity.";
 
 /*to set a local end point from a ttl file, follow this link: 
     https://comunica.dev/docs/query/getting_started/setup_endpoint/
@@ -19,8 +12,8 @@ const TerritoryDescription = "A territory is an administrative division, usually
     IMPORTANT: the exported file from protege, must be a .ttl
     IMPORTANT: Make sure that the relative or absolute path of the file does not contain spaces...*/
 
-//All Country
-exports.allCountry = async (req, res, next) => {
+//All EnergySources
+exports.allEnergySources = async (req, res, next) => {
     
     const result = [];
     console.log("sono qui");
@@ -32,7 +25,7 @@ exports.allCountry = async (req, res, next) => {
                 
         SELECT ?individual 
         WHERE { 
-            ?individual rdf:type swea:Territory .
+            ?individual rdf:type swea:Renewable_Energy_Sources.
         } LIMIT 100`, {
         sources: ['http://localhost:3000/sparql'],
     });
@@ -60,21 +53,14 @@ exports.allCountry = async (req, res, next) => {
 
 }
 
-//singleCountryInf
-exports.singleCountryInf = async (req, res, next) => {
+//singleEnergyInf
+exports.singleEnergyInf = async (req, res, next) => {
     
-    const countryRes = req.query.res;
+    const sourceRes = req.query.res;
     const result = [];
     var jsonData = {};
  
 
-    console.log(`SELECT ?abstract ?population WHERE
-    {
-       <` + countryRes + `> dbo:abstract ?abstract .
-       <` + countryRes + `> dbo:populationTotal ?population.
-
-    FILTER ( LANG ( ?abstract) = 'en' )
-    }`);
     const bindingsStream = await myEngine.queryBindings(`
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -83,9 +69,9 @@ exports.singleCountryInf = async (req, res, next) => {
     SELECT ?abstract ?name ?thumbnail
     WHERE
     {
-       OPTIONAL{<` + countryRes + `>  rdfs:label ?name .}
-       OPTIONAL{<` + countryRes + `> dbo:abstract ?abstract .}
-       OPTIONAL{<` + countryRes + `> dbo:thumbnail ?thumbnail.}
+       OPTIONAL{<` + sourceRes + `>  rdfs:label ?name .}
+       OPTIONAL{<` + sourceRes + `> dbo:abstract ?abstract .}
+       OPTIONAL{<` + sourceRes + `> dbo:thumbnail ?thumbnail.}
        
 
     FILTER ( LANG ( ?abstract) = 'en' )
@@ -95,7 +81,7 @@ exports.singleCountryInf = async (req, res, next) => {
     });
 
     bindingsStream.on('data', (binding) => {
-        jsonData["uri"] = countryRes;
+        jsonData["uri"] = sourceRes;
 
         try {
             jsonData['name'] = binding.get('name').value;
@@ -103,7 +89,7 @@ exports.singleCountryInf = async (req, res, next) => {
             jsonData['name'] = ""
         }
 
-        jsonData["definition"] = TerritoryDescription;
+        jsonData["definition"] = EnergyDescription;
 
         try {
             jsonData['description'] = binding.get('abstract').value;
@@ -139,15 +125,12 @@ exports.singleCountryInf = async (req, res, next) => {
 }
 
 
-//singleCountrySourcesRelated
-// Energy Source that could be exploited in a input territory
-exports.singleCountrySourcesRelated = async (req, res, next) => {
+//singleSourcesCountriesRelated
+// territories in witch is applied a Renewable Source given in input
+exports.singleSourceCountriesRelated = async (req, res, next) => {
     
-    const countryRes = req.query.res;
+    const sourceRes = req.query.res;
     const result = [];
-    var jsonData = {};
- 
-
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -155,10 +138,10 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
 
-        SELECT ?source ?SourceName
+        SELECT ?territory ?territoryName
             WHERE {
-                <` + countryRes + `> swea:can_exploit ?source.
-                OPTIONAL{?source swea:SourceName ?SourceName.}
+                <` + sourceRes + `> swea:can_be_exploited_in ?territory.
+                OPTIONAL{?territory swea:TerritoryName ?territoryName.}
             }
    
         `, {
@@ -166,15 +149,15 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
     });
 
     bindingsStream.on('data', (binding) => {
-
+        var jsonData = {};
         try {
-            jsonData['name'] = binding.get('SourceName').value;
+            jsonData['name'] = binding.get('territoryName').value;
         } catch (error) {
             jsonData['name'] = ""
         }
 
         try {
-            jsonData['address'] = binding.get('source').value;
+            jsonData['address'] = binding.get('territory').value;
         } catch (error) {
             jsonData['address'] = ""
         }
@@ -189,7 +172,7 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
         // The data-listener will not be called anymore once we get here.
         console.log("Ended");
 
-        return res.json({sources: result});
+        return res.json({countries: result});
 
     });
 
@@ -200,11 +183,11 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
 }
 
 
-//singleCountryCriteriaRelated
-// Energy Usage Critera that depends of input territory
-exports.singleCountryCriteriaRelated = async (req, res, next) => {
+//singleSourceCriteriaRelated
+// Energy Usage Critera that depends of input renewable source
+exports.singleSourceCriteriaRelated = async (req, res, next) => {
     
-    const countryRes = req.query.res;
+    const sourceRes = req.query.res;
 
     const criteria_amb = [];
     const criteria_fin = [];
@@ -222,7 +205,7 @@ exports.singleCountryCriteriaRelated = async (req, res, next) => {
 
         SELECT ?criteria ?type ?source ?description
             WHERE {
-                <` + countryRes + `> swea:determines ?criteria.
+                <` + sourceRes + `> swea:used_based_on ?criteria.
                 OPTIONAL{?criteria swea:criteria_type ?type.}
                 OPTIONAL{?criteria swea:source ?source.}
                 OPTIONAL{?criteria swea:description ?description.}
@@ -299,63 +282,3 @@ exports.singleCountryCriteriaRelated = async (req, res, next) => {
 
 
 
-//singleCountryCompanyRelated
-//Company that works on a input territory
-exports.singleCountryCompaniesRelated = async (req, res, next) => {
-    
-    const countryRes = req.query.res;
-    const result = [];
-    
- 
-
-
-    const bindingsStream = await myEngine.queryBindings(`
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX owl: <http://www.w3.org/2002/07/owl#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
-
-        SELECT ?company ?companyName
-            WHERE {
-                <` + countryRes + `> swea:covered_by ?company.
-                OPTIONAL{?company rdfs:label ?companyName.}
-                FILTER ( LANG ( ?companyName) = 'en' )
-            }
-   
-        `, {
-        sources: ['http://localhost:3000/sparql', 'https://dbpedia.org/sparql'],
-    });
-
-    bindingsStream.on('data', (binding) => {
-        var jsonData = {};
-        try {
-            jsonData['name'] = binding.get('companyName').value;
-        } catch (error) {
-            jsonData['name'] = ""
-        }
-
-        try {
-            jsonData['address'] = binding.get('company').value;
-        } catch (error) {
-            jsonData['address'] = ""
-        }
-    
-        
-        console.log(jsonData)
-
-        result.push(jsonData);
-    });
-
-    bindingsStream.on('end', () => {
-        // The data-listener will not be called anymore once we get here.
-        console.log("Ended");
-
-        return res.json({sources: result});
-
-    });
-
-    bindingsStream.on('error', (error) => {
-        console.error(error);
-    });
-
-}

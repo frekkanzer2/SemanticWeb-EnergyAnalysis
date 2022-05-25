@@ -11,7 +11,7 @@ import '../css/page.css';
 import { Space8, Space12, Space16 } from "../utils/spacing";
 
 export function SourcePage(props) {
-    
+
     var sourcedata = {
         name: props.name,
         definition: props.definition,
@@ -54,7 +54,7 @@ export function SourcePage(props) {
     };
 
     var callback_changePage = props.changePageCallback;
-    
+
     const onPressedTerritory = (chosenTerritory) => {
         for (var i = 0; i < sourcedata.placedTerritories.length; i++) {
             if (chosenTerritory == sourcedata.placedTerritories[i].name) {
@@ -70,14 +70,14 @@ export function SourcePage(props) {
                 {sourcedata.name}
             </Typography>
             <Space8/>
-            
+
             <Typography variant="h5" component="div" gutterBottom>
                 Description
             </Typography>
             <Typography variant="caption" component="div" gutterBottom>
             What is a renewable source?
             </Typography>
-            
+
             <Container maxWidth="sm" style={{marginLeft: 0}}>
                 <Typography variant="body1" component="div" gutterBottom>
                     {sourcedata.definition}
@@ -88,7 +88,7 @@ export function SourcePage(props) {
             <Typography variant="caption" component="div" gutterBottom>
             About {sourcedata.name}
             </Typography>
-            
+
             <Container maxWidth="sm" style={{marginLeft: 0}}>
                 <Typography variant="body1" component="div" gutterBottom>
                     {sourcedata.description}
@@ -102,7 +102,7 @@ export function SourcePage(props) {
             <Typography variant="caption" component="div" gutterBottom>
                 Where you can use {sourcedata.name}
             </Typography>
-            
+
             <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
                 <List
                 sx={{ width: '100%' }}
@@ -129,7 +129,7 @@ export function SourcePage(props) {
             <Typography variant="caption" component="div" gutterBottom>
             It's possible to use {sourcedata.name} in a territory according to the following criteria
             </Typography>
-            
+
             <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
                 <List
                 sx={{ width: '100%' }}
