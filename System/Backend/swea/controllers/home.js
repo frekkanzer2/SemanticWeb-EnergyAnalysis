@@ -1,5 +1,3 @@
-const { allCountry } = require('./Territory');
-
 const QueryEngine = require('@comunica/query-sparql').QueryEngine;
 const myEngine = new QueryEngine();
 
@@ -14,81 +12,56 @@ const myEngine = new QueryEngine();
     IMPORTANT: Make sure that the relative or absolute path of the file does not contain spaces...*/
 
 
-    const countries = [];      
-    const sources = [];   
+  
     
 
 //All Country
-exports.allCountryAndResources = async (req, res, next) => {
-    var end1 = false;
-    
+exports.allHomeCountryAndSources = async (req, res, next) => {
+    const result = []; 
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX owl: <http://www.w3.org/2002/07/owl#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
-        PREFIX dbo: <http://dbpedia.org/ontology/>
 
-        SELECT ?individual ?name
-        WHERE { 
-            ?individual rdf:type swea:Territory.
-            ?individual rdfs:label ?name.
-            FILTER ( LANG ( ?name) = 'en' )
-        }`, {
-        sources: ['http://localhost:3000/sparql', 'https://dbpedia.org/sparql'],
+        SELECT ?individual ?name ?type
+            WHERE {
+            { 
+                ?individual rdf:type swea:Territory.
+                ?individual rdf:type ?type.
+                ?individual swea:TerritoryName ?name.
+                FILTER (?type = swea:Territory)
+            }
+            UNION  { 
+                    ?individual rdf:type swea:Renewable_Energy_Sources.
+                    ?individual rdf:type ?type.
+                    ?individual swea:SourceName ?name.
+                    FILTER (?type = swea:Renewable_Energy_Sources)
+            }
+
+        }
+   
+        `, {
+        sources: ['http://localhost:3000/sparql'],
     });
 
     bindingsStream.on('data', (binding) => {
         var jsonData = {};
         jsonData['name'] = binding.get('name').value;
         jsonData['uri'] = binding.get('individual').value;
+        jsonData['type'] = binding.get('type').value;
         
-        countries.push(jsonData);
+        result.push(jsonData);
     });
 
     bindingsStream.on('end', () => {
-        // The data-listener will not be called anymore once we get here.
-        end1 = true;
+        return res.json({result:  result});
     });
 
     bindingsStream.on('error', (error) => {
         console.error(error);
     });
 
-
-    const bindingsStream2 = await myEngine.queryBindings(`
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX owl: <http://www.w3.org/2002/07/owl#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
-        PREFIX dbo: <http://dbpedia.org/ontology/>
-
-        SELECT ?individual ?name
-        WHERE { 
-            ?individual rdf:type swea:Renewable_Energy_Sources.
-            ?individual rdfs:label ?name.
-            FILTER ( LANG ( ?name) = 'en' )
-        }`, {
-        sources: ['http://localhost:3000/sparql', 'https://dbpedia.org/sparql'],
-    });
-
-    bindingsStream2.on('data', (binding) => {
-        var jsonData = {};
-        jsonData['name'] = binding.get('name').value;
-        jsonData['uri'] = binding.get('individual').value;
-        
-        sources.push(jsonData);
-    });
-
-    bindingsStream2.on('end', () => {
-        // The data-listener will not be called anymore once we get here.
-        while(!end1);
-        return res.json([{countries:  countries}, {sources: sources}]);
-    });
-
-    bindingsStream2.on('error', (error) => {
-        console.error(error);
-    });
 }
 

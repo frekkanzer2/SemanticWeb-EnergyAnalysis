@@ -17,21 +17,26 @@
                      rdfs:subPropertyOf owl:topObjectProperty ;
                      owl:inverseOf :can_exploit ;
                      rdfs:domain :Renewable_Energy_Sources ;
-                     rdfs:range :Territory .
+                     rdfs:range :Territory ;
+                     owl:propertyChainAxiom ( :used_based_on
+                                              :determined_by
+                                            ) .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#can_exploit
 :can_exploit rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Territory ;
-             rdfs:range :Renewable_Energy_Sources .
+             rdfs:range :Renewable_Energy_Sources ;
+             owl:propertyChainAxiom ( :determines
+                                      :influences_the_use_of
+                                    ) .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#covered_by
 :covered_by rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             owl:inverseOf :located_in ;
-            rdf:type owl:InverseFunctionalProperty ;
             rdfs:domain :Territory ;
             rdfs:range :Company .
 
@@ -90,7 +95,6 @@
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#located_in
 :located_in rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdf:type owl:InverseFunctionalProperty ;
             rdfs:domain :Company ;
             rdfs:range :Territory .
 
@@ -126,6 +130,17 @@
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#SourceName
+:SourceName rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#TerritoryName
+:TerritoryName rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Territory ;
+               rdfs:range rdfs:Literal .
+
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#acceptance_rateo
 :acceptance_rateo rdf:type owl:DatatypeProperty ;
@@ -230,17 +245,20 @@
 
 ###  http://dbpedia.org/resource/Biomass
 <http://dbpedia.org/resource/Biomass> rdf:type owl:NamedIndividual ,
-                                               :Renewable_Energy_Sources .
+                                               :Renewable_Energy_Sources ;
+                                      :SourceName "Biomass" .
 
 
 ###  http://dbpedia.org/resource/Canada
 <http://dbpedia.org/resource/Canada> rdf:type owl:NamedIndividual ,
-                                              :Territory .
+                                              :Territory ;
+                                     :TerritoryName "Canada" .
 
 
 ###  http://dbpedia.org/resource/Denmark
 <http://dbpedia.org/resource/Denmark> rdf:type owl:NamedIndividual ,
-                                               :Territory .
+                                               :Territory ;
+                                      :TerritoryName "Denmark" .
 
 
 ###  http://dbpedia.org/resource/Enel
@@ -273,27 +291,32 @@
 
 ###  http://dbpedia.org/resource/France
 <http://dbpedia.org/resource/France> rdf:type owl:NamedIndividual ,
-                                              :Territory .
+                                              :Territory ;
+                                     :TerritoryName "France" .
 
 
 ###  http://dbpedia.org/resource/Geothermal_energy
 <http://dbpedia.org/resource/Geothermal_energy> rdf:type owl:NamedIndividual ,
-                                                         :Renewable_Energy_Sources .
+                                                         :Renewable_Energy_Sources ;
+                                                :SourceName "Geothermical Energy" .
 
 
 ###  http://dbpedia.org/resource/Germany
 <http://dbpedia.org/resource/Germany> rdf:type owl:NamedIndividual ,
-                                               :Territory .
+                                               :Territory ;
+                                      :TerritoryName "Germany" .
 
 
 ###  http://dbpedia.org/resource/Hydropower
 <http://dbpedia.org/resource/Hydropower> rdf:type owl:NamedIndividual ,
-                                                  :Renewable_Energy_Sources .
+                                                  :Renewable_Energy_Sources ;
+                                         :SourceName "Hydropower" .
 
 
 ###  http://dbpedia.org/resource/Italy
 <http://dbpedia.org/resource/Italy> rdf:type owl:NamedIndividual ,
-                                             :Territory .
+                                             :Territory ;
+                                    :TerritoryName "Italy" .
 
 
 ###  http://dbpedia.org/resource/NextEra_Energy
@@ -305,7 +328,8 @@
 
 ###  http://dbpedia.org/resource/Nuclear_fusion
 <http://dbpedia.org/resource/Nuclear_fusion> rdf:type owl:NamedIndividual ,
-                                                      :Renewable_Energy_Sources .
+                                                      :Renewable_Energy_Sources ;
+                                             :SourceName "Nuclear_fusion" .
 
 
 ###  http://dbpedia.org/resource/Ormat_Technologies
@@ -321,7 +345,8 @@
 ###  http://dbpedia.org/resource/Solar_energy
 <http://dbpedia.org/resource/Solar_energy> rdf:type owl:NamedIndividual ,
                                                     :Renewable_Energy_Sources ;
-                                           :used_based_on :Photovoltaic_Grid_Parity .
+                                           :used_based_on :Photovoltaic_Grid_Parity ;
+                                           :SourceName "Solar Energy" .
 
 
 ###  http://dbpedia.org/resource/Solar_panel
@@ -331,12 +356,14 @@
 
 ###  http://dbpedia.org/resource/United_Kingdom
 <http://dbpedia.org/resource/United_Kingdom> rdf:type owl:NamedIndividual ,
-                                                      :Territory .
+                                                      :Territory ;
+                                             :TerritoryName "United Kingdom" .
 
 
 ###  http://dbpedia.org/resource/United_States
 <http://dbpedia.org/resource/United_States> rdf:type owl:NamedIndividual ,
-                                                     :Territory .
+                                                     :Territory ;
+                                            :TerritoryName "United States" .
 
 
 ###  http://dbpedia.org/resource/Verbund
@@ -358,7 +385,8 @@
 
 ###  http://dbpedia.org/resource/Wind_power
 <http://dbpedia.org/resource/Wind_power> rdf:type owl:NamedIndividual ,
-                                                  :Renewable_Energy_Sources .
+                                                  :Renewable_Energy_Sources ;
+                                         :SourceName "Wind Power" .
 
 
 ###  http://dbpedia.org/resource/Edison_(company)
