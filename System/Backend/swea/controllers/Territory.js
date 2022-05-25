@@ -15,7 +15,7 @@ const myEngine = new QueryEngine();
 exports.allCountry = async (req, res, next) => {
     
     const result = [];
-
+    console.log("sono qui");
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -75,9 +75,9 @@ exports.singleCountryInf = async (req, res, next) => {
     SELECT ?abstract ?population ?thumbnail
     WHERE
     {
-       <` + countryRes + `> dbo:abstract ?abstract .
-       <` + countryRes + `> dbo:populationTotal ?population.
-       <` + countryRes + `> dbo:thumbnail ?thumbnail.
+       OPTIONAL{<` + countryRes + `> dbo:abstract ?abstract .}
+       OPTIONAL{<` + countryRes + `> dbo:populationTotal ?population.}
+       OPTIONAL{<` + countryRes + `> dbo:thumbnail ?thumbnail.}
        
 
     FILTER ( LANG ( ?abstract) = 'en' )
@@ -87,9 +87,25 @@ exports.singleCountryInf = async (req, res, next) => {
 
     bindingsStream.on('data', (binding) => {
         
-        jsonData['abstract'] = binding.get('abstract').value;
-        jsonData['population'] = binding.get('population').value;
-        jsonData['thumbnail'] = binding.get('thumbnail').value;
+        try {
+            jsonData['abstract'] = binding.get('abstract').value;
+        } catch (error) {
+            jsonData['abstract'] = ""
+        }
+        
+        try {
+            jsonData['population'] = binding.get('population').value;
+        } catch (error) {
+            jsonData['population'] = ""
+        }
+        
+           
+        try {
+            jsonData['thumbnail'] = binding.get('thumbnail').value;
+        } catch (error) {
+            jsonData['thumbnail'] = ""
+        }
+        
         
         console.log(jsonData)
 
