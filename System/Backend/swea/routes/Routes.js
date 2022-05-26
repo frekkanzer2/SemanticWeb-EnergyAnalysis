@@ -7,6 +7,7 @@ const homeController = require("../controllers/home");
 const territoryController = require("../controllers/Territory");
 const sourcesController = require("../controllers/Sources");
 const companyController = require("../controllers/Company");
+const criteriaController = require("../controllers/Criteria");
 
 router.get("/trytest", tryController.test);
 router.get("/localTest", tryController.localOntology);
@@ -26,6 +27,16 @@ router.get("/allSources", sourcesController.allEnergySources);
 router.get("/singleEnergyInformations", sourcesController.singleEnergyInf);
 router.get("/singleSourceCountriesRelated", sourcesController.singleSourceCountriesRelated);
 router.get("/singleSourceCriteriaRelated", sourcesController.singleSourceCriteriaRelated);
+
+//Criteria Routes
+router.get("/singleCriteriaInformation", criteriaController.singleCriteriaInformations);
+router.get("/singleCriteriaTerritoriesRelated", criteriaController.singleCriteriaTerritoriesRelated);
+router.get("/singleCriteriaSourcesRelated", criteriaController.singleCriteriaSourcesRelated);
+router.get("/singleCriteriaEcosystemsAndDevicesAndLawsRelated", criteriaController.singleCriteriaEcosystemsAndDevicesAndLawsRelated);
+router.get("/singleCriteriaPricesMeasuresRelated", criteriaController.singleCriteriaPricesRelated);
+router.get("/singleCriteriaMeasuresRelated", criteriaController.singleCriteriaMeasuresRelated);
+
+
 
 //Company Routes
 router.get("/singleCompanyInformations", companyController.singleCompanyInformations);

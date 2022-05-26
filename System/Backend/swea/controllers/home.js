@@ -15,7 +15,6 @@ const myEngine = new QueryEngine();
   
     
 
-//All Country
 exports.allHomeCountryAndSources = async (req, res, next) => {
     const t = [], s = []; 
 
