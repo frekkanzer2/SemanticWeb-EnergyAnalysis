@@ -77,7 +77,7 @@ exports.singleEnergyInf = async (req, res, next) => {
     FILTER ( LANG ( ?abstract) = 'en' )
     FILTER ( LANG ( ?name) = 'en' )
     }`, {
-        sources: ['https://dbpedia.org/sparql'],
+        sources: ['http://dbpedia.org/sparql'],
     });
 
     bindingsStream.on('data', (binding) => {
@@ -195,8 +195,6 @@ exports.singleSourceCriteriaRelated = async (req, res, next) => {
     const criteria_soc = [];
     const criteria_tec = [];
  
-
-
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -288,4 +286,45 @@ exports.singleSourceCriteriaRelated = async (req, res, next) => {
 }
 
 
+//singleSourceCriteriaRelated
+// Energy Usage Critera that depends of input renewable source
+exports.describeSource = async (req, res, next) => {
+    
+    const sourceRes = req.query.res;
 
+    var records = [];
+
+    const bindingsStream = await myEngine.queryBindings(`
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX swea: <http://www.semanticweb.org/abate/ontologies/2022/4/swea#>
+        PREFIX dbo: <http://dbpedia.org/ontology/#>
+        
+        DESCRIBE ?x
+        WHERE { <` + sourceRes + `> dbo:wikiPageWikiLink ?x}
+        Limit 1
+        `, {
+        sources: ['http://dbpedia.org/sparql'],
+    });
+
+    bindingsStream.on('data', (binding) => {
+
+        records[records.length] = binding;
+       
+    });
+
+    bindingsStream.on('end', () => {
+
+        // The data-listener will not be called anymore once we get here.
+        console.log(records);
+        return res.json({result: records});
+
+    });
+
+    bindingsStream.on('error', (error) => {
+        console.error(error);
+    });
+
+}
