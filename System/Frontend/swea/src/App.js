@@ -12,19 +12,9 @@ function App() {
   const [territory_data, setTerritory_data] = React.useState(null);
   const [source_data, setSource_data] = React.useState(null);
 
-  var debug = true;
-
-  var changePage = (page_id, list_index) => {
+  var changePage = (page_id, address) => {
     // IN SELECTED YOU HAVE THE SELECTED OBJECT
     let selected = null;
-    if (page_id == 1) {
-      var territories = homedata_source.t;
-      selected = territories[list_index];
-    } else if (page_id == 2) {
-      var sources = homedata_source.s;
-      selected = sources[list_index];
-    }
-    var address = selected.address;
     var builder = null;
     if (page_id == 1) {
       // Territory call
@@ -64,14 +54,6 @@ function App() {
                   .then(
                     (result_delta) => {
                       builder.placedCompanies = result_delta.companies;
-                      if (debug) {
-                        builder.criterias[0][builder.criterias.length] = {
-                          criteria: "ID",
-                          criteria_name: "Sample criteria name",
-                          criteria_source: "www.topolino.it",
-                          criteria_description: "Per produrre energia bisogna leggere i fumetti di Topolino"
-                        }
-                      }
                       setTerritory_data(builder);
                       setPageid(page_id);
                     },
