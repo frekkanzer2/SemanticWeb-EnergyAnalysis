@@ -488,7 +488,8 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                                :WindCapacityInGermany2040 ,
                                                :WindCapacityInGermany2045 ;
                                   :criteria_name "Wind Job Opportunities in Germany"^^xsd:string ;
-                                  :criteria_type "Social"^^xsd:string ;
+                                  :criteria_type "Social"^^xsd:string ,
+                                                 "Technical"^^xsd:string ;
                                   :description """Germany’s wind energy industry is one of the world's largest and is at the forefront of technological development.
 
 Germany's long mechanical and electronic engineering tradition is the backbone underpinning its current strong position. The country’s central position makes it an ideal location for European onshore and offshore markets alike. Excellent investment opportunities have led wind energy companies from around the world to base their operations in Germany."""^^xsd:string ;
