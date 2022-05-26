@@ -487,6 +487,7 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                   :measured_by :WindCapacityInGermany2030 ,
                                                :WindCapacityInGermany2040 ,
                                                :WindCapacityInGermany2045 ;
+                                  :criteria_name "Wind Job Opportunities in Germany"^^xsd:string ;
                                   :criteria_type "Social"^^xsd:string ;
                                   :description """Germany’s wind energy industry is one of the world's largest and is at the forefront of technological development.
 
