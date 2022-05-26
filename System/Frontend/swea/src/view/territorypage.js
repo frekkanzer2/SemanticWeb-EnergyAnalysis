@@ -404,11 +404,17 @@ export function TerritoryPage(props) {
 
                                                         </DialogContentText>
                                                     </DialogContent>
-                                                    <DialogActions className="table-dark">
-                                                        <Button onClick={() => {
-                                                            window.open(pressed_company.f_link);
-                                                        }}>About the company</Button>
-                                                    </DialogActions>
+                                                    {
+
+                                                        (pressed_company.f_link == undefined || pressed_company.f_link == null || pressed_company.f_link == "" || pressed_company.f_link == " ")
+                                                        ? <div></div>
+                                                        : <DialogActions className="table-dark">
+                                                            <Button onClick={() => {
+                                                                window.open(pressed_company.f_link);
+                                                            }}>About the founder</Button>
+                                                        </DialogActions>
+
+                                                    }
                                                 </Dialog>
                                             </div>
                                         )

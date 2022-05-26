@@ -410,7 +410,8 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 ###  http://dbpedia.org/resource/United_Kingdom
 <http://dbpedia.org/resource/United_Kingdom> rdf:type owl:NamedIndividual ,
                                                       :Territory ;
-                                             :covered_by <http://dbpedia.org/resource/Vestas> ;
+                                             :covered_by <http://dbpedia.org/resource/Octopus_Energy_Group> ,
+                                                         <http://dbpedia.org/resource/Vestas> ;
                                              :TerritoryName "United Kingdom" .
 
 
