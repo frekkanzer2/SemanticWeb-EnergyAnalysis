@@ -539,7 +539,9 @@ Germany's long mechanical and electronic engineering tradition is the backbone u
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#WindCapacityInGermany2045
 :WindCapacityInGermany2045 rdf:type owl:NamedIndividual ,
                                     :Measure ;
-                           :measure_description "Wind energy capacity will be increased in 2045"^^xsd:string .
+                           :measure_description "Wind energy capacity will be increased in 2045"^^xsd:string ;
+                           :unit "Gigawatt"^^xsd:string ;
+                           :value "75.0"^^xsd:float .
 
 
 ###  http://www.semanticweb.org/abate/ontologies/2022/4/swea#maxPhotovoltaicPanelCost
