@@ -87,7 +87,6 @@ exports.singleCriteriaTerritoriesRelated = async (req, res, next) => {
     
     const criteriaRes = req.query.res; 
     const result = [];
-    var jsonData = {};
  
 
   console.log("SELECT ?territory ?territoryName WHERE { " + 
@@ -113,21 +112,10 @@ exports.singleCriteriaTerritoriesRelated = async (req, res, next) => {
     bindingsStream.on('data', (binding) => {
 
         try {
-            jsonData['name'] = binding.get('territoryName').value;
+            result.push(binding.get('territoryName').value); 
         } catch (error) {
-            jsonData['name'] = ""
+            result.push(""); 
         }
-
-        try {
-            jsonData['address'] = binding.get('territory').value;
-        } catch (error) {
-            jsonData['address'] = ""
-        }
-    
-        
-        console.log(jsonData)
-
-        result.push(jsonData);
     });
 
     bindingsStream.on('end', () => {
@@ -150,7 +138,6 @@ exports.singleCriteriaSourcesRelated = async (req, res, next) => {
     
     const criteriaRes = req.query.res; 
     const result = [];
-    var jsonData = {};
  
 
 
@@ -162,7 +149,7 @@ exports.singleCriteriaSourcesRelated = async (req, res, next) => {
 
         SELECT ?source ?SourceName
             WHERE {
-                ` + criteriaRes + ` swea:can_exploit ?source.
+                ` + criteriaRes + ` swea:influences_the_use_of ?source.
                 OPTIONAL{?source swea:SourceName ?SourceName.}
             }
    
@@ -173,21 +160,12 @@ exports.singleCriteriaSourcesRelated = async (req, res, next) => {
     bindingsStream.on('data', (binding) => {
 
         try {
-            jsonData['name'] = binding.get('SourceName').value;
+            result.push(binding.get('SourceName').value);
         } catch (error) {
-            jsonData['name'] = ""
+            result.push("");
         }
 
-        try {
-            jsonData['address'] = binding.get('source').value;
-        } catch (error) {
-            jsonData['address'] = ""
-        }
     
-        
-        console.log(jsonData)
-
-        result.push(jsonData);
     });
 
     bindingsStream.on('end', () => {
