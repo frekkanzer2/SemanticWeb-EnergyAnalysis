@@ -288,8 +288,8 @@ exports.singleCriteriaPricesRelated = async (req, res, next) => {
     SELECT ?price ?priceDescription  ?priceValue ?priceCurrency
     WHERE {
             ` + criteriaRes +` swea:price ?price.
-             OPTIONAL{?price swea:description ?priceDescription.}
-             OPTIONAL{?price swea:value ?priceValue.}
+             OPTIONAL{?price swea:price_description ?priceDescription.}
+             OPTIONAL{?price swea:amount ?priceValue.}
              OPTIONAL{?price swea:currency ?priceCurrency.}
         
         }
@@ -347,7 +347,7 @@ exports.singleCriteriaMeasuresRelated = async (req, res, next) => {
     SELECT ?measure ?measureDescription  ?measureValue ?measureUnit
     WHERE {
             ` + criteriaRes +` swea:measured_by ?measure.
-             OPTIONAL{?measure swea:description ?measureDescription.}
+             OPTIONAL{?measure swea:measure_description ?measureDescription.}
              OPTIONAL{?measure swea:value ?measureValue.}
              OPTIONAL{?measure swea:unit ?measureUnit.}
         

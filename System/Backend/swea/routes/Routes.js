@@ -33,7 +33,7 @@ router.get("/singleCriteriaInformation", criteriaController.singleCriteriaInform
 router.get("/singleCriteriaTerritoriesRelated", criteriaController.singleCriteriaTerritoriesRelated);
 router.get("/singleCriteriaSourcesRelated", criteriaController.singleCriteriaSourcesRelated);
 router.get("/singleCriteriaEcosystemsAndDevicesAndLawsRelated", criteriaController.singleCriteriaEcosystemsAndDevicesAndLawsRelated);
-router.get("/singleCriteriaPricesMeasuresRelated", criteriaController.singleCriteriaPricesRelated);
+router.get("/singleCriteriaPricesRelated", criteriaController.singleCriteriaPricesRelated);
 router.get("/singleCriteriaMeasuresRelated", criteriaController.singleCriteriaMeasuresRelated);
 
 
