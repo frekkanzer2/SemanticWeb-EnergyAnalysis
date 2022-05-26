@@ -12,6 +12,8 @@ function App() {
   const [territory_data, setTerritory_data] = React.useState(null);
   const [source_data, setSource_data] = React.useState(null);
 
+  var debug = true;
+
   var changePage = (page_id, list_index) => {
     // IN SELECTED YOU HAVE THE SELECTED OBJECT
     let selected = null;
@@ -62,7 +64,14 @@ function App() {
                   .then(
                     (result_delta) => {
                       builder.placedCompanies = result_delta.companies;
-                      console.log(builder);
+                      if (debug) {
+                        builder.criterias[0][builder.criterias.length] = {
+                          criteria: "ID",
+                          criteria_name: "Sample criteria name",
+                          criteria_source: "www.topolino.it",
+                          criteria_description: "Per produrre energia bisogna leggere i fumetti di Topolino"
+                        }
+                      }
                       setTerritory_data(builder);
                       setPageid(page_id);
                     },
