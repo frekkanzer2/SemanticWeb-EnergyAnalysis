@@ -17,6 +17,14 @@
 	box-shadow: none!important;
 }
 
+.table-softwhite {
+    background-color: #d6d6d6!important;
+    border: none!important;
+	-webkit-box-shadow: none!important;
+	-moz-box-shadow: none!important;
+	box-shadow: none!important;
+}
+
 .listitem-dark {
     background-color: #30343c!important;
 }

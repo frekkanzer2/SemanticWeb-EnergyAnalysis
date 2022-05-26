@@ -14,7 +14,6 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -22,7 +21,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
 
 export function SourcePage(props) {
 
@@ -400,29 +398,29 @@ export function SourcePage(props) {
                             </List>
                         </Container>
                         {
-
                             (pressed_criteria != null) ?
                                 <Dialog
                                     fullScreen
                                     open={criteria_open}
                                     onClose={handleCriteriaClose}
+                                    className="table-softwhite"
                                 >
-                                    <AppBar sx={{ position: 'relative' }}>
-                                    <Toolbar>
-                                        <IconButton
-                                        edge="start"
-                                        color="inherit"
-                                        onClick={handleCriteriaClose}
-                                        aria-label="close"
-                                        >
-                                            <CloseIcon />
-                                        </IconButton>
-                                        <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                                            {pressed_criteria.type} criteria: {pressed_criteria.name}
-                                        </Typography>
-                                    </Toolbar>
+                                    <AppBar sx={{ position: 'relative', backgroundColor: "#2e323b"}}>
+                                        <Toolbar>
+                                            <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            onClick={handleCriteriaClose}
+                                            aria-label="close"
+                                            >
+                                                <CloseIcon />
+                                            </IconButton>
+                                            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                                                {pressed_criteria.type} criteria: {pressed_criteria.name}
+                                            </Typography>
+                                        </Toolbar>
                                     </AppBar>
-                                    <List>
+                                    <List className="table-softwhite">
                                         <ListItem>
                                             <ListItemText primary="Description" secondary={pressed_criteria.description} />
                                         </ListItem>
@@ -435,11 +433,11 @@ export function SourcePage(props) {
                                         <Divider />
                                     </List>
 
-                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                    <Typography className="table-softwhite" variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
                                         Related devices
                                     </Typography>
 
-                                    <List>
+                                    <List className="table-softwhite">
                                         {
 
                                             pressed_criteria.devices.length > 0 ?
@@ -468,11 +466,11 @@ export function SourcePage(props) {
                                         }
                                     </List>
 
-                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                    <Typography className="table-softwhite" variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
                                         Related norms
                                     </Typography>
 
-                                    <List>
+                                    <List className="table-softwhite">
                                         {
 
                                             pressed_criteria.norms.length > 0 ?
@@ -501,11 +499,11 @@ export function SourcePage(props) {
                                         }
                                     </List>
 
-                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                    <Typography className="table-softwhite" variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
                                         Related ecosystems
                                     </Typography>
 
-                                    <List>
+                                    <List className="table-softwhite">
                                         {
 
                                             pressed_criteria.ecosystems.length > 0 ?
@@ -534,11 +532,11 @@ export function SourcePage(props) {
                                         }
                                     </List>
 
-                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                    <Typography className="table-softwhite" variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
                                         Related measures
                                     </Typography>
 
-                                    <List>
+                                    <List className="table-softwhite">
                                         {
 
                                             pressed_criteria.measures.length > 0 ?
@@ -565,11 +563,11 @@ export function SourcePage(props) {
                                         }
                                     </List>
 
-                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                    <Typography className="table-softwhite" variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
                                         Related prices
                                     </Typography>
 
-                                    <List>
+                                    <List className="table-softwhite">
                                         {
 
                                             pressed_criteria.prices.length > 0 ?
@@ -596,9 +594,79 @@ export function SourcePage(props) {
                                         }
                                     </List>
 
+                                    <Box sx={{ flexGrow: 1 }} className="table-softwhite">
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={6}>
+
+                                                <Typography variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
+                                                    Related sources
+                                                </Typography>
+
+                                                <List>
+                                                    {
+
+                                                        pressed_criteria.sources.length > 0 ?
+                                                        pressed_criteria.sources.map(
+                                                            source => {
+                                                                return (
+                                                                    <div>
+                                                                        <ListItem>
+                                                                            <ListItemText secondary={source} />
+                                                                        </ListItem>
+                                                                        <Divider />
+                                                                    </div>
+                                                                )
+                                                            }
+                                                        ) :
+                                                        <div>
+                                                            <ListItem>
+                                                                <ListItemText secondary="Empty" />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    }
+                                                </List>
+
+                                            </Grid>
+                                            <Grid item xs={6}>
+
+                                                <Typography variant="body1" component="div" gutterBottom sx={{paddingLeft: 2, paddingTop: 1.5, marginBottom: -0.5, paddingBottom: 0, fontWeight: 700}}>
+                                                    Related territories
+                                                </Typography>
+
+                                                <List >
+                                                    {
+
+                                                        pressed_criteria.territories.length > 0 ?
+                                                        pressed_criteria.territories.map(
+                                                            territory => {
+                                                                return (
+                                                                    <div>
+                                                                        <ListItem >
+                                                                            <ListItemText secondary={territory} />
+                                                                        </ListItem>
+                                                                        <Divider />
+                                                                    </div>
+                                                                )
+                                                            }
+                                                        ) :
+                                                        <div>
+                                                            <ListItem>
+                                                                <ListItemText secondary="Empty" />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    }
+                                                </List>
+
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
+
                                 </Dialog>
                             : <div></div>
-
                         }
                     </Grid>
                 </Grid>

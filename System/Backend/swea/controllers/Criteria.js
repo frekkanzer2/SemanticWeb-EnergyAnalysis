@@ -15,7 +15,7 @@ const myEngine = new QueryEngine();
 exports.singleCriteriaInformations = async (req, res, next) => {
     
     const criteriaRes = req.query.res;
-    const result = [];
+    var result = null;
     var jsonData = {};
  
 
@@ -37,6 +37,7 @@ exports.singleCriteriaInformations = async (req, res, next) => {
     });
 
     bindingsStream.on('data', (binding) => {
+
         jsonData["address"] = criteriaRes;
 
         try {
@@ -62,15 +63,21 @@ exports.singleCriteriaInformations = async (req, res, next) => {
         } catch (error) {
             jsonData['source'] = ""
         }
+
+        console.log(jsonData.type);
         
-        console.log(jsonData)
+        if (result == null) result = {...jsonData}
+        else {
+            var type = result.type;
+            result.type = type + ", " + jsonData.type;
+        }
     });
 
     bindingsStream.on('end', () => {
         // The data-listener will not be called anymore once we get here.
         console.log("Ended");
 
-        return res.json(jsonData);
+        return res.json(result);
 
     });
 
