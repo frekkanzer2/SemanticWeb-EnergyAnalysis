@@ -50,6 +50,7 @@ export function TerritoryPage(props) {
     const [open_political, setOpen_political] = React.useState(false);
     const [open_social, setOpen_social] = React.useState(false);
     const [open_technical, setOpen_technical] = React.useState(false);
+    const [company_open, setCompany_open] = React.useState(false);
     const [pressed_company, setPressed_company] = React.useState({});
 
     const handleClick_ambiental = () => {
@@ -78,8 +79,6 @@ export function TerritoryPage(props) {
             }
         }
     };
-
-    const [company_open, setCompany_open] = React.useState(false);
   
     const handleCompanyClickOpen = (company_address) => {
         fetch("http://127.0.0.1:8080/singleCompanyInformations?res=" + company_address)

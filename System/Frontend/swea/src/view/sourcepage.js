@@ -14,6 +14,15 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
 
 export function SourcePage(props) {
 
@@ -42,6 +51,8 @@ export function SourcePage(props) {
     const [open_political, setOpen_political] = React.useState(false);
     const [open_social, setOpen_social] = React.useState(false);
     const [open_technical, setOpen_technical] = React.useState(false);
+    const [criteria_open, setCriteria_open] = React.useState(false);
+    const [pressed_criteria, setPressed_criteria] = React.useState(null);
 
     const handleClick_ambiental = () => {
         setOpen_ambiental(!open_ambiental);
@@ -57,6 +68,96 @@ export function SourcePage(props) {
     };
     const handleClick_technical = () => {
         setOpen_technical(!open_technical);
+    };
+
+    const handleCriteriaClickOpen = (criteria_address) => {
+        criteria_address = criteria_address.replace('http://www.semanticweb.org/abate/ontologies/2022/4/swea#', 'swea:');
+        var details = {};
+        fetch("http://127.0.0.1:8080/singleCriteriaInformation?res=" + criteria_address)
+            .then(res_a => res_a.json())
+            .then(
+                (result_a) => {
+                    details.name = result_a.name;
+                    details.type = result_a.type;
+                    details.description = result_a.description;
+                    details.link = result_a.source;
+
+                    fetch("http://127.0.0.1:8080/singleCriteriaTerritoriesRelated?res=" + criteria_address)
+                        .then(res_b => res_b.json())
+                        .then(
+                            (result_b) => {
+                                details.territories = result_b.territories;
+
+                                fetch("http://127.0.0.1:8080/singleCriteriaSourcesRelated?res=" + criteria_address)
+                                    .then(res_c => res_c.json())
+                                    .then(
+                                        (result_c) => {
+                                            details.sources = result_c.sources;
+            
+                                            fetch("http://127.0.0.1:8080/singleCriteriaEcosystemsAndDevicesAndLawsRelated?res=" + criteria_address)
+                                                .then(res_d => res_d.json())
+                                                .then(
+                                                    (result_d) => {
+                                                        details.ecosystems = result_d.ecosystems;
+                                                        details.devices = result_d.devices;
+                                                        details.norms = result_d.norms;
+                                                        
+                                                        fetch("http://127.0.0.1:8080/singleCriteriaPricesRelated?res=" + criteria_address)
+                                                            .then(res_e => res_e.json())
+                                                            .then(
+                                                                (result_e) => {
+                                                                    details.prices = result_e.prices;
+
+                                                                    fetch("http://127.0.0.1:8080/singleCriteriaMeasuresRelated?res=" + criteria_address)
+                                                                        .then(res_f => res_f.json())
+                                                                        .then(
+                                                                            (result_f) => {
+                                                                                details.measures = result_f.measures;
+                                                                                
+                                                                                console.log(details);
+
+                                                                                setPressed_criteria(details);
+                                                                                setCriteria_open(true);
+
+                                                                            },
+                                                                            (error_f) => {
+                                                                                console.log("Backend error");
+                                                                            }
+                                                                        )
+
+                                                                },
+                                                                (error_e) => {
+                                                                    console.log("Backend error");
+                                                                }
+                                                            )
+
+                                                    },
+                                                    (error_d) => {
+                                                        console.log("Backend error");
+                                                    }
+                                                )
+            
+                                        },
+                                        (error_c) => {
+                                            console.log("Backend error");
+                                        }
+                                    )
+
+                            },
+                            (error_b) => {
+                                console.log("Backend error");
+                            }
+                        )
+
+                },
+                (error_a) => {
+                    console.log("Backend error");
+                }
+            )
+    };
+  
+    const handleCriteriaClose = () => {
+        setCriteria_open(false);
     };
 
     var callback_changePage = props.changePageCallback;
@@ -180,7 +281,9 @@ export function SourcePage(props) {
                                             sourcedata.crit_amb.map(
                                                 crit => {
                                                     return (
-                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark' onClick={() => {
+                                                            handleCriteriaClickOpen(crit.criteria);
+                                                        }}>
                                                             <ListItemText primary={"- " + crit.criteria_name} />
                                                         </ListItemButton>
                                                     )
@@ -203,7 +306,9 @@ export function SourcePage(props) {
                                         sourcedata.crit_fin.map(
                                             crit => {
                                                 return (
-                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark' onClick={() => {
+                                                        handleCriteriaClickOpen(crit.criteria);
+                                                    }}>
                                                         <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
@@ -226,7 +331,9 @@ export function SourcePage(props) {
                                         sourcedata.crit_pol.map(
                                             crit => {
                                                 return (
-                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark' onClick={() => {
+                                                        handleCriteriaClickOpen(crit.criteria);
+                                                    }}>
                                                         <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
@@ -250,7 +357,9 @@ export function SourcePage(props) {
                                             sourcedata.crit_soc.map(
                                                 crit => {
                                                     return (
-                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                        <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark' onClick={() => {
+                                                            handleCriteriaClickOpen(crit.criteria);
+                                                        }}>
                                                             <ListItemText primary={"- " + crit.criteria_name} />
                                                         </ListItemButton>
                                                     )
@@ -273,7 +382,9 @@ export function SourcePage(props) {
                                         sourcedata.crit_tec.map(
                                             crit => {
                                                 return (
-                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark'>
+                                                    <ListItemButton sx={{ pl: 4 }} className='sublistitem-dark' onClick={() => {
+                                                        handleCriteriaClickOpen(crit.criteria);
+                                                    }}>
                                                         <ListItemText primary={"- " + crit.criteria_name} />
                                                     </ListItemButton>
                                                 )
@@ -288,7 +399,207 @@ export function SourcePage(props) {
                             </Collapse>
                             </List>
                         </Container>
+                        {
 
+                            (pressed_criteria != null) ?
+                                <Dialog
+                                    fullScreen
+                                    open={criteria_open}
+                                    onClose={handleCriteriaClose}
+                                >
+                                    <AppBar sx={{ position: 'relative' }}>
+                                    <Toolbar>
+                                        <IconButton
+                                        edge="start"
+                                        color="inherit"
+                                        onClick={handleCriteriaClose}
+                                        aria-label="close"
+                                        >
+                                            <CloseIcon />
+                                        </IconButton>
+                                        <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                                            {pressed_criteria.type} criteria: {pressed_criteria.name}
+                                        </Typography>
+                                    </Toolbar>
+                                    </AppBar>
+                                    <List>
+                                        <ListItem>
+                                            <ListItemText primary="Description" secondary={pressed_criteria.description} />
+                                        </ListItem>
+                                        <Divider />
+                                        <ListItem button onClick={() => {
+                                            window.open(pressed_criteria.link);
+                                        }}>
+                                            <ListItemText primary="About this criteria" secondary={pressed_criteria.link} />
+                                        </ListItem>
+                                        <Divider />
+                                    </List>
+
+                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                        Related devices
+                                    </Typography>
+
+                                    <List>
+                                        {
+
+                                            pressed_criteria.devices.length > 0 ?
+                                            pressed_criteria.devices.map(
+                                                device => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem button onClick={() => {
+                                                                window.open(device.individual);
+                                                            }}>
+                                                                <ListItemText secondary={device.individual} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                        Related norms
+                                    </Typography>
+
+                                    <List>
+                                        {
+
+                                            pressed_criteria.norms.length > 0 ?
+                                            pressed_criteria.norms.map(
+                                                norm => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem button onClick={() => {
+                                                                window.open(norm.individual);
+                                                            }}>
+                                                                <ListItemText secondary={norm.individual} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                        Related ecosystems
+                                    </Typography>
+
+                                    <List>
+                                        {
+
+                                            pressed_criteria.ecosystems.length > 0 ?
+                                            pressed_criteria.ecosystems.map(
+                                                eco => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem button onClick={() => {
+                                                                window.open(eco.individual);
+                                                            }}>
+                                                                <ListItemText secondary={eco.individual} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                        Related measures
+                                    </Typography>
+
+                                    <List>
+                                        {
+
+                                            pressed_criteria.measures.length > 0 ?
+                                            pressed_criteria.measures.map(
+                                                measure => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem>
+                                                                <ListItemText primary={measure.value + " " + measure.unit} secondary={measure.description} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                    <Typography variant="body1" component="div" gutterBottom sx={{marginLeft: 2, marginTop: 1.5, marginBottom: -1, paddingBottom: 0}}>
+                                        Related prices
+                                    </Typography>
+
+                                    <List>
+                                        {
+
+                                            pressed_criteria.prices.length > 0 ?
+                                            pressed_criteria.prices.map(
+                                                price => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem>
+                                                                <ListItemText primary={price.value + " " + price.currency} secondary={price.description} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                </Dialog>
+                            : <div></div>
+
+                        }
                     </Grid>
                 </Grid>
             </Box>
