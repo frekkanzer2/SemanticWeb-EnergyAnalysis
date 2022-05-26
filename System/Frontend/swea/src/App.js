@@ -14,17 +14,9 @@ function App() {
 
   var debug = true;
 
-  var changePage = (page_id, list_index) => {
+  var changePage = (page_id, address) => {
     // IN SELECTED YOU HAVE THE SELECTED OBJECT
     let selected = null;
-    if (page_id == 1) {
-      var territories = homedata_source.t;
-      selected = territories[list_index];
-    } else if (page_id == 2) {
-      var sources = homedata_source.s;
-      selected = sources[list_index];
-    }
-    var address = selected.address;
     var builder = null;
     if (page_id == 1) {
       // Territory call
@@ -70,6 +62,10 @@ function App() {
                           criteria_name: "Sample criteria name",
                           criteria_source: "www.topolino.it",
                           criteria_description: "Per produrre energia bisogna leggere i fumetti di Topolino"
+                        }
+                        builder.placedCompanies[builder.placedCompanies.length] = {
+                          name: "Sample company name",
+                          address: "http://dbpedia.org/resource/Enel"
                         }
                       }
                       setTerritory_data(builder);

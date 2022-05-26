@@ -64,7 +64,7 @@ export function SourcePage(props) {
     const onPressedTerritory = (chosenTerritory) => {
         for (var i = 0; i < sourcedata.placedTerritories.length; i++) {
             if (chosenTerritory == sourcedata.placedTerritories[i].name) {
-                callback_changePage(1, i);
+                callback_changePage(1, sourcedata.placedTerritories[i].address);
                 break;
             }
         }

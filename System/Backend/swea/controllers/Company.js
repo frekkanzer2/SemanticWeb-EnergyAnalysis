@@ -66,18 +66,11 @@ exports.singleCompanyInformations = async (req, res, next) => {
         } catch (error) {
             jsonData['foundingDate'] = ""
         }
-
-              
+        
         try {
             jsonData['founder'] = binding.get('founder').value;
         } catch (error) {
             jsonData['founder'] = ""
-        }
-
-        try {
-            jsonData['keyPerson'] = binding.get('keyPerson').value;
-        } catch (error) {
-            jsonData['keyPerson'] = ""
         }
 
         result.push(jsonData);

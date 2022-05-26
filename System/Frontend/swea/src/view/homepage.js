@@ -76,7 +76,7 @@ export function HomePage(props) {
   const onPressedTerritory = (chosenTerritory) => {
     for (var i = 0; i < homedata.territories.length; i++) {
       if (chosenTerritory == homedata.territories[i].name) {
-        callback_changePage(1, i);
+        callback_changePage(1, homedata.territories[i].address);
         break;
       }
     }
@@ -84,7 +84,7 @@ export function HomePage(props) {
   const onPressedSource = (chosenSource) => {
     for (var i = 0; i < homedata.sources.length; i++) {
       if (chosenSource == homedata.sources[i].name) {
-        callback_changePage(2, i);
+        callback_changePage(2, homedata.sources[i].address);
         break;
       }
     }

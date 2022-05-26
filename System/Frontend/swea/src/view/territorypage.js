@@ -14,6 +14,12 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import DialogActions from '@mui/material/DialogActions';
 
 export function TerritoryPage(props) {
 
@@ -44,6 +50,7 @@ export function TerritoryPage(props) {
     const [open_political, setOpen_political] = React.useState(false);
     const [open_social, setOpen_social] = React.useState(false);
     const [open_technical, setOpen_technical] = React.useState(false);
+    const [pressed_company, setPressed_company] = React.useState({});
 
     const handleClick_ambiental = () => {
         setOpen_ambiental(!open_ambiental);
@@ -66,10 +73,36 @@ export function TerritoryPage(props) {
     const onPressedSource = (chosenSource) => {
         for (var i = 0; i < territorydata.placedSources.length; i++) {
             if (chosenSource == territorydata.placedSources[i].name) {
-                callback_changePage(2, i);
+                callback_changePage(2, territorydata.placedSources[i].address);
                 break;
             }
         }
+    };
+
+    const [company_open, setCompany_open] = React.useState(false);
+  
+    const handleCompanyClickOpen = (company_address) => {
+        fetch("http://127.0.0.1:8080/singleCompanyInformations?res=" + company_address)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setPressed_company({
+                        name: result.name,
+                        description: result.description,
+                        thumbnail: result.thumbnail,
+                        f_date: result.foundingDate,
+                        f_link: result.founder
+                    })
+                    setCompany_open(true);
+                },
+                (error) => {
+                    console.log("Backend error");
+                }
+            )
+    };
+  
+    const handleCompanyClose = () => {
+        setCompany_open(false);
     };
 
     return(
@@ -311,9 +344,73 @@ export function TerritoryPage(props) {
                                 territorydata.placedCompanies.map(
                                     company => {
                                         return (
-                                            <ListItemButton className='listitem-dark'>
-                                                <ListItemText primary={company.name} />
-                                            </ListItemButton>
+                                            <div>
+                                                <ListItemButton className='listitem-dark' onClick={() => {
+                                                    handleCompanyClickOpen(company.address);
+                                                }}>
+                                                    <ListItemText primary={company.name} />
+                                                </ListItemButton>
+                                                <Dialog
+                                                    open={company_open}
+                                                    keepMounted
+                                                    onClose={handleCompanyClose}
+                                                    aria-describedby="alert-dialog-slide-description"
+                                                >
+                                                    <DialogTitle className="table-dark" sx={{color: "#FFFFFF"}}>
+                                                        {pressed_company.name}
+                                                    </DialogTitle>
+                                                    <DialogContent className="table-dark">
+                                                        <DialogContentText id="alert-dialog-slide-description" sx={{color: "#FFFFFF"}}>
+
+                                                            {
+                                                                (pressed_company.thumbnail == null || pressed_company.thumbnail == undefined || pressed_company.thumbnail == "" || pressed_company.thumbnail == " ")
+                                                                ? <div></div>
+                                                                : <Card className='table-dark' sx={{ marginBottom: 2 }}>
+                                                                    <CardActionArea>
+                                                                        <CardMedia sx={{ height: 80, objectFit: 'contain' }}
+                                                                        component="img"
+                                                                        image={pressed_company.thumbnail}
+                                                                        />
+                                                                    </CardActionArea>
+                                                                    <Space8/>
+                                                                </Card>
+                                                            }
+                        
+                                                            <Typography variant="subtitle" component="div" gutterBottom>
+                                                                Description
+                                                            </Typography>
+
+                                                            <Typography variant="caption" component="div" gutterBottom align='justify'>
+                                                                {pressed_company.description}
+                                                            </Typography>
+
+                                                            {
+
+                                                                (pressed_company.f_date == undefined || pressed_company.f_date == null || pressed_company.f_date == "" || pressed_company.f_date == " ")
+                                                                ? <div></div>
+                                                                : <div>
+                                                                    <Space8/>
+
+                                                                    <Typography variant="subtitle" component="div" gutterBottom>
+                                                                        Founding date
+                                                                    </Typography>
+
+                                                                    <Typography variant="caption" component="div" gutterBottom>
+                                                                        Founded in {pressed_company.f_date}
+                                                                    </Typography>
+                                                                </div>
+
+                                                            }
+
+                                                        </DialogContentText>
+                                                    </DialogContent>
+                                                    <DialogActions className="table-dark">
+                                                        <Button onClick={() => {
+                                                            window.open(pressed_company.f_link);
+                                                        }}>About the company</Button>
+                                                    </DialogActions>
+                                                </Dialog>
+                                            </div>
                                         )
                                     }
                                 ) :
