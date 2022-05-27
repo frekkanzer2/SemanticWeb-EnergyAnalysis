@@ -17,6 +17,8 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
+import { red } from '@mui/material/colors';
+import { color } from '@mui/system';
 
 export function PreLoadingPage(props) {
 
@@ -93,8 +95,8 @@ export function HomePage(props) {
 
   return (
 
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+    <Box sx={{ flexGrow: 1}}>
+      <Grid container spacing={2} sx= {{backgroundColor: red}}>
         <Grid item xs={3}>
 
         </Grid>
@@ -105,8 +107,8 @@ export function HomePage(props) {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="140"
-                image="https://i.pinimg.com/originals/02/a5/c8/02a5c8c74c6bd59ae6028247f796b880.png"
+                height="250"
+                image="https://i.ibb.co/yRxRqt3/logo.png"
               />
             </CardActionArea>
           </Card>
