@@ -14,6 +14,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import { CardActionArea } from '@mui/material';
+import CardMedia from '@mui/material/CardMedia';
 
 export function PreLoadingPage(props) {
 
@@ -97,6 +100,16 @@ export function HomePage(props) {
         </Grid>
         <Grid item xs={6}>
           <Container sx={{marginTop: 4, marginLeft: 0}}>
+
+          <Card sx={{ maxWidth: 802, marginTop: 6, marginBottom: 1.4}}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image="https://i.pinimg.com/originals/02/a5/c8/02a5c8c74c6bd59ae6028247f796b880.png"
+              />
+            </CardActionArea>
+          </Card>
 
             <TableContainer component={Paper} sx={{ maxWidth: 800 }} className="table-dark">
               <Table aria-label="" className="table-dark">
