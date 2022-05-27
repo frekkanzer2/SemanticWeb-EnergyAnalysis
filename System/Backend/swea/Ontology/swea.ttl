@@ -293,7 +293,8 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://dbpedia.org/resource/China
 <http://dbpedia.org/resource/China> rdf:type owl:NamedIndividual ,
-                                             :Territory .
+                                             :Territory ;
+                                    :TerritoryName "China" .
 
 
 ###  http://dbpedia.org/resource/Denmark
@@ -371,17 +372,20 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://dbpedia.org/resource/India
 <http://dbpedia.org/resource/India> rdf:type owl:NamedIndividual ,
-                                             :Territory .
+                                             :Territory ;
+                                    :TerritoryName "India" .
 
 
 ###  http://dbpedia.org/resource/Iran
 <http://dbpedia.org/resource/Iran> rdf:type owl:NamedIndividual ,
-                                            :Territory .
+                                            :Territory ;
+                                   :TerritoryName "Iran" .
 
 
 ###  http://dbpedia.org/resource/Ireland
 <http://dbpedia.org/resource/Ireland> rdf:type owl:NamedIndividual ,
-                                               :Territory .
+                                               :Territory ;
+                                      :TerritoryName "Ireland" .
 
 
 ###  http://dbpedia.org/resource/Italy
@@ -398,7 +402,8 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://dbpedia.org/resource/Madagascar
 <http://dbpedia.org/resource/Madagascar> rdf:type owl:NamedIndividual ,
-                                                  :Territory .
+                                                  :Territory ;
+                                         :TerritoryName "Madagascar" .
 
 
 ###  http://dbpedia.org/resource/Marine_energy
@@ -438,7 +443,8 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://dbpedia.org/resource/Pakistan
 <http://dbpedia.org/resource/Pakistan> rdf:type owl:NamedIndividual ,
-                                                :Territory .
+                                                :Territory ;
+                                       :TerritoryName "Pakistan" .
 
 
 ###  http://dbpedia.org/resource/Solar_energy
@@ -456,12 +462,14 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 
 ###  http://dbpedia.org/resource/Spain
 <http://dbpedia.org/resource/Spain> rdf:type owl:NamedIndividual ,
-                                             :Territory .
+                                             :Territory ;
+                                    :TerritoryName "Spain" .
 
 
 ###  http://dbpedia.org/resource/Sri_Lanka
 <http://dbpedia.org/resource/Sri_Lanka> rdf:type owl:NamedIndividual ,
-                                                 :Territory .
+                                                 :Territory ;
+                                        :TerritoryName "Sri Lanka" .
 
 
 ###  http://dbpedia.org/resource/United_Kingdom
