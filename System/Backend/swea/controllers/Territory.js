@@ -145,9 +145,6 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
     
     const countryRes = req.query.res; 
     const result = [];
-    var jsonData = {};
- 
-
 
     const bindingsStream = await myEngine.queryBindings(`
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -166,6 +163,7 @@ exports.singleCountrySourcesRelated = async (req, res, next) => {
     });
 
     bindingsStream.on('data', (binding) => {
+        var jsonData = {};
 
         try {
             jsonData['name'] = binding.get('SourceName').value;

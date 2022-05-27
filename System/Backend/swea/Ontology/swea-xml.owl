@@ -324,7 +324,7 @@
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#value">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
@@ -542,6 +542,14 @@
     
 
 
+    <!-- http://dbpedia.org/resource/ITER -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/ITER">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://dbpedia.org/resource/Iberdrola -->
 
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Iberdrola">
@@ -629,6 +637,30 @@
     
 
 
+    <!-- http://dbpedia.org/resource/Nuclear_power_plant -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Nuclear_power_plant">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Nuclear_reactor -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Nuclear_reactor">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Ocean -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Ocean">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ecosystem"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://dbpedia.org/resource/Octopus_Energy_Group -->
 
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Octopus_Energy_Group">
@@ -657,6 +689,30 @@
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Pakistan">
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Territory"/>
         <TerritoryName>Pakistan</TerritoryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/River -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/River">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ecosystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/San_Emidio_Geothermal_Plant -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/San_Emidio_Geothermal_Plant">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Soda_Lake_Geothermal_Plant -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Soda_Lake_Geothermal_Plant">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
     </owl:NamedIndividual>
     
 
@@ -698,6 +754,16 @@
     
 
 
+    <!-- http://dbpedia.org/resource/U.S._Geothermal -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/U.S._Geothermal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company"/>
+        <located_in rdf:resource="http://dbpedia.org/resource/United_States"/>
+        <produce_energy_with rdf:resource="http://dbpedia.org/resource/Geothermal_energy"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://dbpedia.org/resource/United_Kingdom -->
 
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/United_Kingdom">
@@ -716,6 +782,14 @@
         <covered_by rdf:resource="http://dbpedia.org/resource/First_Solar"/>
         <covered_by rdf:resource="http://dbpedia.org/resource/Verbund"/>
         <TerritoryName>United States</TerritoryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Upflow_anaerobic_sludge_blanket_digestion -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Upflow_anaerobic_sludge_blanket_digestion">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
     </owl:NamedIndividual>
     
 
@@ -739,6 +813,14 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Company"/>
         <located_in rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
         <produce_energy_with rdf:resource="http://dbpedia.org/resource/Wind_power"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Water_turbine -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Water_turbine">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Device"/>
     </owl:NamedIndividual>
     
 
@@ -791,7 +873,10 @@
         <determined_by rdf:resource="http://dbpedia.org/resource/China"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/India"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Ireland"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Wind_farm"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Wind_turbine"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Wind_power"/>
+        <measured_by rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#WindCapacityInIndia2021"/>
         <criteria_name>Accelerated Depreciation benefit</criteria_name>
         <criteria_type>Economic</criteria_type>
         <criteria_type>Politic</criteria_type>
@@ -812,6 +897,7 @@ In addition to fiscal and other incentives as stated above, following steps also
         <determined_by rdf:resource="http://dbpedia.org/resource/Pakistan"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_States"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Solar_panel"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Solar_energy"/>
         <criteria_name>Alternative Compliance Payment (ACP) Rates</criteria_name>
         <criteria_type>Economic</criteria_type>
@@ -828,13 +914,26 @@ In addition to fiscal and other incentives as stated above, following steps also
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Italy"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Spain"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Upflow_anaerobic_sludge_blanket_digestion"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Biomass"/>
+        <measured_by rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ethanol_produced"/>
+        <criteria_name>Biofuel with gasoline</criteria_name>
         <criteria_type>Ambiental</criteria_type>
-        <criteria_type>Biofuel with gasoline</criteria_type>
         <criteria_type>Technical</criteria_type>
         <description>Biofuels do not operate as efficiently as gasoline. However, they can be blended with gasoline to efficiently power vehicles and machinery, and do not release the emissions associated with fossil fuels.
 Ethanol requires acres of farmland to grow biocrops (usually corn). About 1,515 liters (400 gallons) of ethanol is produced by an acre of corn. But this acreage is then unavailable for growing crops for food or other uses. Growing enough corn for ethanol also creates a strain on the environment because of the lack of variation in planting, and the high use of pesticides.</description>
         <source>https://education.nationalgeographic.org/resource/biomass-energy</source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ethanol_produced -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Ethanol_produced">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
+        <description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">How much ethanol is produced by an acre of corn</description>
+        <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">liters</unit>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1515</value>
     </owl:NamedIndividual>
     
 
@@ -867,6 +966,10 @@ The capacity to generate employment is indeed frequently identified as a factor.
         <determined_by rdf:resource="http://dbpedia.org/resource/Spain"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_Kingdom"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_States"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/ITER"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Nuclear_power_plant"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Nuclear_reactor"/>
+        <featured_by_norm rdf:resource="https://www.iter.org/doc/www/content/com/Lists/WebText_2014/Attachments/245/ITERAgreement.pdf"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Nuclear_fusion"/>
         <criteria_name>Fusion facility agreement</criteria_name>
         <criteria_type>Politic</criteria_type>
@@ -923,7 +1026,7 @@ increases in solar deployment</criteria_name>
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
         <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">photovoltaic system standard household power in Italy</measure_description>
         <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kilowatt</unit>
-        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</value>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</value>
     </owl:NamedIndividual>
     
 
@@ -935,6 +1038,8 @@ increases in solar deployment</criteria_name>
         <determined_by rdf:resource="http://dbpedia.org/resource/Italy"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Madagascar"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_States"/>
+        <featured_by_environment rdf:resource="http://dbpedia.org/resource/Ocean"/>
+        <featured_by_environment rdf:resource="http://dbpedia.org/resource/River"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Marine_energy"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Wind_power"/>
         <criteria_name>Wind energy could affect marine ecosystems</criteria_name>
@@ -971,6 +1076,8 @@ A team of scientists led by Zoë Hutchison monitored the benthic ecosystem, or t
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Power_through_water_in_USA">
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/United_States"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Water_turbine"/>
+        <featured_by_environment rdf:resource="http://dbpedia.org/resource/Ocean"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Hydropower"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Marine_energy"/>
         <criteria_name>Power through water in USA</criteria_name>
@@ -1005,6 +1112,7 @@ A team of scientists led by Zoë Hutchison monitored the benthic ecosystem, or t
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Canada"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Denmark"/>
+        <featured_by_norm rdf:resource="https://www.europarl.europa.eu/RegData/etudes/STUD/2016/556968/IPOL_STU(2016)556968_EN.pdf"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Solar_energy"/>
         <criteria_name>Solar Investment Tax Credit</criteria_name>
         <criteria_type>Economic</criteria_type>
@@ -1021,12 +1129,37 @@ A team of scientists led by Zoë Hutchison monitored the benthic ecosystem, or t
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Iran"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Madagascar"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/San_Emidio_Geothermal_Plant"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Soda_Lake_Geothermal_Plant"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Geothermal_energy"/>
+        <measured_by rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#maxC_heat"/>
+        <measured_by rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#minC_heat"/>
         <criteria_name>Suitable heat on surface</criteria_name>
         <criteria_type>Ambiental</criteria_type>
         <criteria_type>Technical</criteria_type>
         <description>Geological Survey of India has identified about 340 geothermal hot springs in the country. Most of them are in the low surface temperature range from 370C to 900C, which is suitable for direct heat applications. Only some are suited for power generation. The potential for power generation at these sites is about 10,000 MW. Though, India has been one of the earliest countries to begin geothermal projects way back in the 1970s, but at present there are no operational geothermal plants in India.</description>
         <source>https://www.electricalindia.in/geothermal-energy/#:~:text=Status%20of%20Geothermal%20Energy%20in%20India&amp;text=The%20potential%20for%20power%20generation,operational%20geothermal%20plants%20in%20India.</source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#Superbonus_110 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Superbonus_110">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
+        <determined_by rdf:resource="http://dbpedia.org/resource/Italy"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Solar_panel"/>
+        <featured_by_norm rdf:resource="https://www.efficienzaenergetica.enea.it/images/detrazioni/Normativa/ART._119_E_121.pdf"/>
+        <featured_by_norm rdf:resource="https://www.gazzettaufficiale.it/eli/id/2020/07/18/20G00095/sg"/>
+        <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Solar_energy"/>
+        <criteria_name>Superbonus 110%</criteria_name>
+        <criteria_type>Economic</criteria_type>
+        <criteria_type>Politic</criteria_type>
+        <criteria_type>Social</criteria_type>
+        <criteria_type>Technical</criteria_type>
+        <description>Il Decreto Rilancio, convertito con modificazioni dalla L. 17 luglio 2020, n. 77, ha introdotto, oltre al sismabonus, il superbonus con detrazioni al 110% per interventi di efficientamento energetico sull’abitazione, suddivisi in principali (o trainanti) e aggiuntivi (o trainati). Tra questi ultimi è stato incluso anche il fotovoltaico con accumulo che per poter quindi beneficiare del superbonus 110% dovrà essere trainato da altre tipologie di intervento considerate trainanti, come per esempio l’installazione di una pompa di calore o il cappotto termico. Insieme dovranno consentire il doppio salto di classe energetica o comunque il conseguimento di quella più elevata. Per accedere al superbonus 110%, è dunque necessario inserire l&apos;installazione di un impianto fotovoltaico all&apos;interno di un investimento più ampio.
+Quando parliamo di bonus fotovoltaico 110 (che molti chiamano anche ecobonus fotovoltaico, riferendosi alla medesima agevolazione), richiamiamo dunque la possibilità di accedere a queste importanti detrazioni per i pannelli solari con accumulo nell’ambito di quanto previsto dal Decreto Rilancio.</description>
+        <source>https://eniplenitude.com/energie-intelligenti/energie-alternative/ecobonus-110-fotovoltaico-guida</source>
     </owl:NamedIndividual>
     
 
@@ -1059,6 +1192,7 @@ iv) Uncertain political situations in some countries with high geothermal potent
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_of_Black_Liquor">
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Utilization_Criteria"/>
         <determined_by rdf:resource="http://dbpedia.org/resource/Italy"/>
+        <featured_by_device rdf:resource="http://dbpedia.org/resource/Upflow_anaerobic_sludge_blanket_digestion"/>
         <influences_the_use_of rdf:resource="http://dbpedia.org/resource/Biomass"/>
         <criteria_name>Utilization of Black Liquor</criteria_name>
         <criteria_type>Ambiental</criteria_type>
@@ -1078,7 +1212,7 @@ However, black liquor retains more than 50% of the wood’s biomass energy. With
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
         <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offshore wind energy capacity will be increased in 2030</measure_description>
         <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gigawatt</unit>
-        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">30.0</value>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30</value>
     </owl:NamedIndividual>
     
 
@@ -1089,7 +1223,7 @@ However, black liquor retains more than 50% of the wood’s biomass energy. With
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
         <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Offshore wind energy capacity will be increased to in 2040</measure_description>
         <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gigawatt</unit>
-        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">40.0</value>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40</value>
     </owl:NamedIndividual>
     
 
@@ -1100,7 +1234,29 @@ However, black liquor retains more than 50% of the wood’s biomass energy. With
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
         <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wind energy capacity will be increased in 2045</measure_description>
         <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gigawatt</unit>
-        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#float">75.0</value>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">75</value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#WindCapacityInIndia2021 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#WindCapacityInIndia2021">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
+        <measure_description>Offshore wind energy capacity will be increased in 2021</measure_description>
+        <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GW</unit>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">39.25</value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#maxC_heat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#maxC_heat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
+        <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Celsius, also called centigrade, scale based on 0° for the freezing point of water and 100° for the boiling point of water. Invented in 1742 by the Swedish astronomer Anders Celsius, it is sometimes called the centigrade scale because of the 100-degree interval between the defined points.</measure_description>
+        <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C</unit>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">900</value>
     </owl:NamedIndividual>
     
 
@@ -1116,6 +1272,17 @@ However, black liquor retains more than 50% of the wood’s biomass energy. With
     
 
 
+    <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#minC_heat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#minC_heat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Measure"/>
+        <measure_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Celsius, also called centigrade, scale based on 0° for the freezing point of water and 100° for the boiling point of water. Invented in 1742 by the Swedish astronomer Anders Celsius, it is sometimes called the centigrade scale because of the 100-degree interval between the defined points.</measure_description>
+        <unit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C</unit>
+        <value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">370</value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/abate/ontologies/2022/4/swea#minPhotovoltaicPanelCosts -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/abate/ontologies/2022/4/swea#minPhotovoltaicPanelCosts">
@@ -1127,9 +1294,41 @@ However, black liquor retains more than 50% of the wood’s biomass energy. With
     
 
 
+    <!-- https://www.efficienzaenergetica.enea.it/images/detrazioni/Normativa/ART._119_E_121.pdf -->
+
+    <owl:NamedIndividual rdf:about="https://www.efficienzaenergetica.enea.it/images/detrazioni/Normativa/ART._119_E_121.pdf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.europarl.europa.eu/RegData/etudes/STUD/2016/556968/IPOL_STU(2016)556968_EN.pdf -->
+
+    <owl:NamedIndividual rdf:about="https://www.europarl.europa.eu/RegData/etudes/STUD/2016/556968/IPOL_STU(2016)556968_EN.pdf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://www.fiscoetasse.com/files/13530/legge-bilancio-2022-gazzetta-ufficiale-31-12-21.pdf -->
 
     <owl:NamedIndividual rdf:about="https://www.fiscoetasse.com/files/13530/legge-bilancio-2022-gazzetta-ufficiale-31-12-21.pdf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.gazzettaufficiale.it/eli/id/2020/07/18/20G00095/sg -->
+
+    <owl:NamedIndividual rdf:about="https://www.gazzettaufficiale.it/eli/id/2020/07/18/20G00095/sg">
+        <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.iter.org/doc/www/content/com/Lists/WebText_2014/Attachments/245/ITERAgreement.pdf -->
+
+    <owl:NamedIndividual rdf:about="https://www.iter.org/doc/www/content/com/Lists/WebText_2014/Attachments/245/ITERAgreement.pdf">
         <rdf:type rdf:resource="http://www.semanticweb.org/abate/ontologies/2022/4/swea#Legal_Norm"/>
     </owl:NamedIndividual>
 </rdf:RDF>
