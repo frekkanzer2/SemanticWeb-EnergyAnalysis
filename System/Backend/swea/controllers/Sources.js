@@ -350,24 +350,22 @@ exports.describeSource = async (req, res, next) => {
     const client = new SparqlClient({ endpointUrl })
     const stream = await client.query.select(query)
     
+    var i = 0;
+
     stream.on('data', row => {
-      var i = 0;
-      var key;
-      Object.entries(row).forEach(([key, value]) => {
-        i = i + 1;
-        var JSONkey = "res" + i; 
-        results.push(value.value);
-        console.log(`${key}: ${value.value} (${value.termType})`)
-      })
+
+        if (Object.entries(row)[0][1].value != sourceRes && !results.includes(Object.entries(row)[0][1].value))
+            results.push(Object.entries(row)[0][1].value);
+        
     })
 
     stream.on('end', row => {
         return res.json({results: results});
-      })
+    })
 
     
     stream.on('error', err => {
-      console.error(err)
+        console.error(err)
     })
 
 }

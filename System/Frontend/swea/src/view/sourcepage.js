@@ -21,10 +21,14 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export function SourcePage(props) {
 
     var sourcedata = {
+        address: props.address,
         name: props.name,
         definition: props.definition,
         description: props.description,
@@ -51,6 +55,8 @@ export function SourcePage(props) {
     const [open_technical, setOpen_technical] = React.useState(false);
     const [criteria_open, setCriteria_open] = React.useState(false);
     const [pressed_criteria, setPressed_criteria] = React.useState(null);
+    const [describe_open, setDescribe_open] = React.useState(false);
+    const [describe_contents, setDescribe_contents] = React.useState(null);
 
     const handleClick_ambiental = () => {
         setOpen_ambiental(!open_ambiental);
@@ -167,6 +173,27 @@ export function SourcePage(props) {
                 break;
             }
         }
+    };
+
+    const onPressDescribe = () => {
+        var resource_link = sourcedata.address;
+        fetch("http://127.0.0.1:8080//describeSource?res=" + resource_link)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setDescribe_contents({
+                        links: result.results
+                    });
+                    setDescribe_open(true);
+                },
+                (error) => {
+                    console.log("Backend error");
+                }
+            )
+    }
+  
+    const handleDescribeClose = () => {
+        setDescribe_open(false);
     };
 
     return (
@@ -660,7 +687,6 @@ export function SourcePage(props) {
 
                                                     }
                                                 </List>
-
                                             </Grid>
                                         </Grid>
                                     </Box>
@@ -668,12 +694,87 @@ export function SourcePage(props) {
                                 </Dialog>
                             : <div></div>
                         }
+                        
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Describe resource
+                        </Typography>
+                        <Typography variant="caption" component="div" gutterBottom>
+                            Search for {sourcedata.name} related resources
+                        </Typography>
+                        <Container maxWidth="sm" style={{marginLeft: 0, marginBottom: 16}}>
+                            <Button variant="outlined" size="large" sx={{ width: '100%', borderColor: "#FFFFFF", color: "#FFFFFF" }} onClick={onPressDescribe}>Describe energy source</Button>
+                        </Container>
+                        {
+                            (describe_contents != null) ?
+                                <Dialog
+                                    fullScreen
+                                    open={describe_open}
+                                    onClose={handleDescribeClose}
+                                    className="table-softwhite"
+                                >
+                                    <AppBar sx={{ position: 'relative', backgroundColor: "#2e323b"}}>
+                                        <Toolbar>
+                                            <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            onClick={handleDescribeClose}
+                                            aria-label="close"
+                                            >
+                                                <CloseIcon />
+                                            </IconButton>
+                                            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                                                Describing {sourcedata.name}
+                                            </Typography>
+                                        </Toolbar>
+                                    </AppBar>
+
+                                    <List className="table-softwhite">
+                                        {
+
+                                            describe_contents.links.length > 0 ?
+                                            describe_contents.links.map(
+                                                link => {
+                                                    return (
+                                                        <div>
+                                                            <ListItem button onClick={() => {
+                                                                window.open(link);
+                                                            }}>
+                                                                <ListItemText secondary={link} />
+                                                            </ListItem>
+                                                            <Divider />
+                                                        </div>
+
+                                                    )
+                                                }
+                                            ) :
+                                            <div>
+                                                <ListItem>
+                                                    <ListItemText secondary="Empty" />
+                                                </ListItem>
+                                                <Divider />
+                                            </div>
+
+                                        }
+                                    </List>
+
+                                </Dialog>
+                            : <div></div>
+                        }
+
                     </Grid>
                 </Grid>
             </Box>
 
+            <Fab className="fab-back" color="red" aria-label="add" onClick={goBack}>
+                <ArrowBackIcon/>
+            </Fab>
+
         </Container>
 
     );
+
+    function goBack() {
+        callback_changePage(0, '');
+    }
 
 }

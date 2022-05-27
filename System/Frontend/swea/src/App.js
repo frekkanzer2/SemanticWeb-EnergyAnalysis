@@ -16,6 +16,9 @@ function App() {
     // IN SELECTED YOU HAVE THE SELECTED OBJECT
     let selected = null;
     var builder = null;
+    if (page_id == 0) {
+      setPageid(page_id);
+    }
     if (page_id == 1) {
       // Territory call
       builder = {};
@@ -91,6 +94,7 @@ function App() {
       .then(res_alpha => res_alpha.json())
       .then(
         (result_alpha) => {
+          builder.address = result_alpha.uri;
           builder.name = result_alpha.name;
           builder.description = result_alpha.description;
           builder.definition = result_alpha.definition;
@@ -187,6 +191,7 @@ function App() {
               />
             : pageid == 2 ?
               <SourcePage 
+                address = {source_data.address}
                 name={source_data.name} 
                 definition = {source_data.definition}
                 description = {source_data.description} 

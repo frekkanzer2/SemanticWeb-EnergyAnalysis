@@ -26,6 +26,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
+import Fab from '@mui/material/Fab';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export function TerritoryPage(props) {
 
@@ -810,7 +812,15 @@ export function TerritoryPage(props) {
                 </Grid>
             </Box>
 
+            <Fab className="fab-back" color="red" aria-label="add" onClick={goBack}>
+                <ArrowBackIcon/>
+            </Fab>
+
         </Container>
     );
+
+    function goBack() {
+        callback_changePage(0, '');
+    }
 
 }

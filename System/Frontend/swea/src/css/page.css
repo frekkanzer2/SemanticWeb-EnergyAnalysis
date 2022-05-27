@@ -40,3 +40,9 @@
     margin-left: auto; 
     margin-right: 16px;
 }
+
+.fab-back{
+    top: 24px!important;
+    left: 26px!important;
+    position: fixed!important;
+}
