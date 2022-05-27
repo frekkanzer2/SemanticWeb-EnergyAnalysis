@@ -1,4 +1,7 @@
 # SW-EA
+## - HEY! README!
+We noticed an high number of clones. We suspect you need it for exams and various things :)
+If so, please thank us by clicking the "star"!
 ## - How to display the ontology
 1. Go on the following link: http://vowl.visualdataweb.org/webvowl.htmlhttps://service.tib.eu/webvowl/ and run WEBVOWL (try the old version if primary link is down)
 2. On the bottom bar, press on "Ontology"
