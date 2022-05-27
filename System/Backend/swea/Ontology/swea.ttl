@@ -291,6 +291,11 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                      :TerritoryName "Canada" .
 
 
+###  http://dbpedia.org/resource/China
+<http://dbpedia.org/resource/China> rdf:type owl:NamedIndividual ,
+                                             :Territory .
+
+
 ###  http://dbpedia.org/resource/Denmark
 <http://dbpedia.org/resource/Denmark> rdf:type owl:NamedIndividual ,
                                                :Territory ;
@@ -358,6 +363,27 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                          :SourceName "Hydropower" .
 
 
+###  http://dbpedia.org/resource/Iberdrola
+<http://dbpedia.org/resource/Iberdrola> rdf:type owl:NamedIndividual ,
+                                                 :Company ;
+                                        :located_in <http://dbpedia.org/resource/Spain> .
+
+
+###  http://dbpedia.org/resource/India
+<http://dbpedia.org/resource/India> rdf:type owl:NamedIndividual ,
+                                             :Territory .
+
+
+###  http://dbpedia.org/resource/Iran
+<http://dbpedia.org/resource/Iran> rdf:type owl:NamedIndividual ,
+                                            :Territory .
+
+
+###  http://dbpedia.org/resource/Ireland
+<http://dbpedia.org/resource/Ireland> rdf:type owl:NamedIndividual ,
+                                               :Territory .
+
+
 ###  http://dbpedia.org/resource/Italy
 <http://dbpedia.org/resource/Italy> rdf:type owl:NamedIndividual ,
                                              :Territory ;
@@ -368,6 +394,16 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                                 <http://dbpedia.org/resource/Edison_(company)> ;
                                     :determines :Photovoltaic_Grid_Parity ;
                                     :TerritoryName "Italy" .
+
+
+###  http://dbpedia.org/resource/Madagascar
+<http://dbpedia.org/resource/Madagascar> rdf:type owl:NamedIndividual ,
+                                                  :Territory .
+
+
+###  http://dbpedia.org/resource/Marine_energy
+<http://dbpedia.org/resource/Marine_energy> rdf:type owl:NamedIndividual ,
+                                                     :Renewable_Energy_Sources .
 
 
 ###  http://dbpedia.org/resource/NextEra_Energy
@@ -400,6 +436,11 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
                                                                       <http://dbpedia.org/resource/Wind_power> .
 
 
+###  http://dbpedia.org/resource/Pakistan
+<http://dbpedia.org/resource/Pakistan> rdf:type owl:NamedIndividual ,
+                                                :Territory .
+
+
 ###  http://dbpedia.org/resource/Solar_energy
 <http://dbpedia.org/resource/Solar_energy> rdf:type owl:NamedIndividual ,
                                                     :Renewable_Energy_Sources ;
@@ -411,6 +452,16 @@ owl:topObjectProperty rdf:type owl:ObjectProperty ;
 ###  http://dbpedia.org/resource/Solar_panel
 <http://dbpedia.org/resource/Solar_panel> rdf:type owl:NamedIndividual ,
                                                    :Device .
+
+
+###  http://dbpedia.org/resource/Spain
+<http://dbpedia.org/resource/Spain> rdf:type owl:NamedIndividual ,
+                                             :Territory .
+
+
+###  http://dbpedia.org/resource/Sri_Lanka
+<http://dbpedia.org/resource/Sri_Lanka> rdf:type owl:NamedIndividual ,
+                                                 :Territory .
 
 
 ###  http://dbpedia.org/resource/United_Kingdom
