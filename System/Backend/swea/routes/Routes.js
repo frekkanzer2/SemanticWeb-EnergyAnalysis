@@ -28,6 +28,8 @@ router.get("/singleEnergyInformations", sourcesController.singleEnergyInf);
 router.get("/singleSourceCountriesRelated", sourcesController.singleSourceCountriesRelated);
 router.get("/singleSourceCriteriaRelated", sourcesController.singleSourceCriteriaRelated);
 router.get("/describeSource", sourcesController.describeSource);
+router.get("/insertSourceUtilizationCriteria", sourcesController.insertSourceUtilizationCriteria);
+
 
 //Criteria Routes
 router.get("/singleCriteriaInformation", criteriaController.singleCriteriaInformations);

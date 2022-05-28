@@ -108,7 +108,7 @@ export function HomePage(props) {
               <CardMedia
                 component="img"
                 height="250"
-                image="https://i.ibb.co/yRxRqt3/logo.png"
+                image="https://tokeny.pl/wp-content/uploads/2021/01/PornHub.jpg"
               />
             </CardActionArea>
           </Card>
