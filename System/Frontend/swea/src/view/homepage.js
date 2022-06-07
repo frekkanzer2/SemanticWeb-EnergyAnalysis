@@ -103,16 +103,6 @@ export function HomePage(props) {
         <Grid item xs={6}>
           <Container sx={{marginTop: 4, marginLeft: 0}}>
 
-          <Card sx={{ maxWidth: 802, marginTop: 6, marginBottom: 1.4}}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="250"
-                image="https://tokeny.pl/wp-content/uploads/2021/01/PornHub.jpg"
-              />
-            </CardActionArea>
-          </Card>
-
             <TableContainer component={Paper} sx={{ maxWidth: 800 }} className="table-dark">
               <Table aria-label="" className="table-dark">
                 <TableHead>
